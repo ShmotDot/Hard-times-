@@ -1,0 +1,777 @@
+{
+  "trees": {
+    "survival": {
+      "name": "Survival",
+      "description": "Skills for surviving in harsh urban environments and meeting basic needs",
+      "primary_attribute": "endurance",
+      "perks": {
+        "resourceful": {
+          "name": "Resourceful",
+          "description": "Find more resources when scavenging",
+          "level_required": 2,
+          "effects": {
+            "scavenge_yield": 15
+          }
+        },
+        "weather_hardened": {
+          "name": "Weather Hardened",
+          "description": "Better resilience against environmental effects",
+          "level_required": 3,
+          "effects": {
+            "weather_resistance": 20
+          }
+        },
+        "efficient_metabolism": {
+          "name": "Efficient Metabolism",
+          "description": "Food and water last longer",
+          "level_required": 5,
+          "effects": {
+            "food_efficiency": 20,
+            "water_efficiency": 20
+          }
+        }
+      },
+      "prerequisites": {
+        "fire_making": {
+          "tree_level": "2"
+        },
+        "winter_survival": {
+          "skill": "shelter_finding:3"
+        }
+      }
+    },
+    "social": {
+      "name": "Street Diplomacy",
+      "description": "Skills for interacting with people and building relationships",
+      "primary_attribute": "charisma",
+      "perks": {
+        "street_reputation": {
+          "name": "Street Reputation",
+          "description": "People remember and recognize you more",
+          "level_required": 2,
+          "effects": {
+            "recognition": 20,
+            "faction_gain_bonus": 10
+          }
+        },
+        "network_builder": {
+          "name": "Network Builder",
+          "description": "Build relationships with NPCs faster",
+          "level_required": 4,
+          "effects": {
+            "relationship_gain_speed": 25
+          }
+        }
+      }
+    },
+    "economic": {
+      "name": "Urban Hustle",
+      "description": "Skills for earning and managing resources",
+      "primary_attribute": "intelligence",
+      "perks": {
+        "penny_pincher": {
+          "name": "Penny Pincher",
+          "description": "Better at spotting good deals and making money last",
+          "level_required": 2,
+          "effects": {
+            "purchase_discount": 5,
+            "money_efficiency": 10
+          }
+        },
+        "opportunity_spotter": {
+          "name": "Opportunity Spotter",
+          "description": "More likely to find economic opportunities",
+          "level_required": 3,
+          "effects": {
+            "job_opportunity_chance": 20,
+            "rare_item_chance": 15
+          }
+        }
+      }
+    },
+    "mental": {
+      "name": "Mental Resilience",
+      "description": "Skills for maintaining mental health and solving problems",
+      "primary_attribute": "intelligence",
+      "perks": {
+        "mind_over_matter": {
+          "name": "Mind Over Matter",
+          "description": "Reduced stress from difficult situations",
+          "level_required": 2,
+          "effects": {
+            "stress_reduction": 15,
+            "mental_decay_reduction": 10
+          }
+        },
+        "problem_solver": {
+          "name": "Problem Solver",
+          "description": "Better at finding solutions to challenges",
+          "level_required": 3,
+          "effects": {
+            "quest_insight_chance": 25,
+            "puzzle_bonus": 20
+          }
+        }
+      }
+    },
+    "physical": {
+      "name": "Physical Hardiness",
+      "description": "Skills for physical tasks and maintaining health",
+      "primary_attribute": "strength",
+      "perks": {
+        "tough_as_nails": {
+          "name": "Tough as Nails",
+          "description": "Increased health and resistance to illness",
+          "level_required": 2,
+          "effects": {
+            "health_bonus": 10,
+            "illness_resistance": 15
+          }
+        },
+        "efficient_movement": {
+          "name": "Efficient Movement",
+          "description": "Actions consume less energy",
+          "level_required": 3,
+          "effects": {
+            "energy_efficiency": 10,
+            "travel_energy_cost": -15
+          }
+        }
+      }
+    }
+  },
+  "skills": {
+    "shelter_finding": {
+      "name": "Shelter Finding",
+      "description": "Finding and creating safe places to sleep",
+      "category": "survival",
+      "tree": "survival",
+      "related_stats": ["health", "energy"],
+      "decay_rate": 0.05,
+      "max_level": 10,
+      "abilities": {
+        "urban_camper": {
+          "name": "Urban Camper",
+          "description": "Better rest quality in makeshift shelters",
+          "level_required": 2,
+          "effects": {
+            "rest_bonus": 10
+          },
+          "passive": true,
+          "action_type": "rest"
+        },
+        "weather_resistant": {
+          "name": "Weather Resistant",
+          "description": "Reduce negative effects from harsh weather",
+          "level_required": 4,
+          "effects": {
+            "weather_resistance": 25
+          },
+          "passive": true,
+          "action_type": "weather"
+        },
+        "hidden_spots": {
+          "name": "Hidden Spots",
+          "description": "Find more secure locations less likely to be disturbed",
+          "level_required": 6,
+          "effects": {
+            "safety_bonus": 30,
+            "discovery_chance": -25
+          },
+          "passive": true,
+          "action_type": "shelter"
+        },
+        "quick_setup": {
+          "name": "Quick Setup",
+          "description": "Set up shelter faster, consuming less time and energy",
+          "level_required": 8,
+          "effects": {
+            "setup_time": -30,
+            "energy_cost": -20
+          },
+          "passive": true,
+          "action_type": "shelter_setup"
+        }
+      }
+    },
+    "food_acquisition": {
+      "name": "Food Acquisition",
+      "description": "Finding, scavenging, and safely consuming food",
+      "category": "survival",
+      "tree": "survival",
+      "related_stats": ["health", "satiety"],
+      "decay_rate": 0.1,
+      "max_level": 10,
+      "abilities": {
+        "dumpster_diving": {
+          "name": "Dumpster Diving Pro",
+          "description": "Better chance to find good food in dumpsters",
+          "level_required": 2,
+          "effects": {
+            "scavenge_bonus": 20
+          },
+          "passive": true,
+          "action_type": "scavenge_food"
+        },
+        "food_safety": {
+          "name": "Food Safety Expert",
+          "description": "Better at identifying safe food, reduced chance of illness",
+          "level_required": 3,
+          "effects": {
+            "illness_chance": -30,
+            "food_identification": 25
+          },
+          "passive": true,
+          "action_type": "consume_food"
+        },
+        "food_preservation": {
+          "name": "Food Preservation",
+          "description": "Food items last longer before expiring",
+          "level_required": 5,
+          "effects": {
+            "food_expiry_bonus": 48
+          },
+          "passive": true,
+          "action_type": "inventory"
+        },
+        "efficient_forager": {
+          "name": "Efficient Forager",
+          "description": "Get more nutrition from the same amount of food",
+          "level_required": 7,
+          "effects": {
+            "nutrition_bonus": 25
+          },
+          "passive": true,
+          "action_type": "consume_food"
+        }
+      }
+    },
+    "fire_making": {
+      "name": "Fire Making",
+      "description": "Creating and maintaining fires for warmth and cooking",
+      "category": "survival",
+      "tree": "survival",
+      "related_stats": ["health", "energy"],
+      "decay_rate": 0.1,
+      "max_level": 10,
+      "abilities": {
+        "quick_spark": {
+          "name": "Quick Spark",
+          "description": "Start fires faster with fewer resources",
+          "level_required": 2,
+          "effects": {
+            "fire_start_time": -30,
+            "resource_consumption": -20
+          },
+          "passive": true,
+          "action_type": "start_fire"
+        },
+        "efficient_burn": {
+          "name": "Efficient Burn",
+          "description": "Fires last longer with the same amount of fuel",
+          "level_required": 4,
+          "effects": {
+            "fire_duration": 50
+          },
+          "passive": true,
+          "action_type": "maintain_fire"
+        },
+        "heat_maximizer": {
+          "name": "Heat Maximizer",
+          "description": "Get more warmth from fires, especially in cold weather",
+          "level_required": 6,
+          "effects": {
+            "warmth_bonus": 30,
+            "winter_efficiency": 25
+          },
+          "passive": true,
+          "action_type": "fire_warmth"
+        }
+      }
+    },
+    "winter_survival": {
+      "name": "Winter Survival",
+      "description": "Specialized techniques for surviving harsh winter conditions",
+      "category": "survival",
+      "tree": "survival",
+      "related_stats": ["health", "energy"],
+      "decay_rate": 0.05,
+      "max_level": 10,
+      "abilities": {
+        "cold_resistance": {
+          "name": "Cold Resistance",
+          "description": "Reduced negative effects from cold temperatures",
+          "level_required": 2,
+          "effects": {
+            "cold_damage": -25,
+            "energy_loss_cold": -20
+          },
+          "passive": true,
+          "action_type": "weather_cold"
+        },
+        "insulation_expert": {
+          "name": "Insulation Expert",
+          "description": "Better at creating and maintaining warm shelters",
+          "level_required": 4,
+          "effects": {
+            "shelter_warmth": 30,
+            "insulation_quality": 25
+          },
+          "passive": true,
+          "action_type": "shelter_winter"
+        },
+        "snow_navigation": {
+          "name": "Snow Navigation",
+          "description": "More efficient movement in snow, reduced energy consumption",
+          "level_required": 7,
+          "effects": {
+            "snow_travel_speed": 30,
+            "snow_energy_cost": -25
+          },
+          "passive": true,
+          "action_type": "travel_snow"
+        }
+      }
+    },
+    "persuasion": {
+      "name": "Persuasion",
+      "description": "Convincing others to help or cooperate",
+      "category": "social",
+      "tree": "social",
+      "related_stats": ["mental", "charisma"],
+      "decay_rate": 0.1,
+      "max_level": 10,
+      "abilities": {
+        "convincing_story": {
+          "name": "Convincing Story",
+          "description": "Better success when asking for help",
+          "level_required": 2,
+          "effects": {
+            "success_bonus": 15
+          },
+          "passive": true,
+          "action_type": "ask_for_help"
+        },
+        "emotional_appeal": {
+          "name": "Emotional Appeal",
+          "description": "More effective at appealing to others' emotions",
+          "level_required": 3,
+          "effects": {
+            "emotional_impact": 25,
+            "sympathy_chance": 20
+          },
+          "passive": true,
+          "action_type": "persuade_emotion"
+        },
+        "negotiator": {
+          "name": "Negotiator",
+          "description": "Better prices when trading",
+          "level_required": 5,
+          "effects": {
+            "trade_bonus": 10,
+            "haggle_success": 20
+          },
+          "passive": true,
+          "action_type": "trade"
+        },
+        "trust_builder": {
+          "name": "Trust Builder",
+          "description": "Develop trust more quickly with strangers",
+          "level_required": 7,
+          "effects": {
+            "initial_trust": 15,
+            "trust_gain_speed": 25
+          },
+          "passive": true,
+          "action_type": "relationship"
+        }
+      }
+    },
+    "street_awareness": {
+      "name": "Street Awareness",
+      "description": "Awareness of surroundings and potential dangers",
+      "category": "social",
+      "tree": "social",
+      "related_stats": ["mental", "safety"],
+      "decay_rate": 0.05,
+      "max_level": 10,
+      "abilities": {
+        "danger_sense": {
+          "name": "Danger Sense",
+          "description": "Better chance to detect threats and unsafe situations",
+          "level_required": 2,
+          "effects": {
+            "threat_detection": 25,
+            "ambush_chance": -20
+          },
+          "passive": true,
+          "action_type": "awareness"
+        },
+        "territory_knowledge": {
+          "name": "Territory Knowledge",
+          "description": "Better understanding of different areas and their dynamics",
+          "level_required": 3,
+          "effects": {
+            "territory_insight": 30,
+            "navigation_speed": 15
+          },
+          "passive": true,
+          "action_type": "navigation"
+        },
+        "safe_passage": {
+          "name": "Safe Passage",
+          "description": "Reduced chance of encountering dangerous situations",
+          "level_required": 5,
+          "effects": {
+            "danger_event_chance": -25,
+            "safe_route_finding": 30
+          },
+          "passive": true,
+          "action_type": "travel"
+        },
+        "urban_camouflage": {
+          "name": "Urban Camouflage",
+          "description": "Blend in better, reducing unwanted attention",
+          "level_required": 7,
+          "effects": {
+            "detection_chance": -30,
+            "social_invisibility": 25
+          },
+          "passive": true,
+          "action_type": "stealth"
+        }
+      }
+    },
+    "trading": {
+      "name": "Street Trading",
+      "description": "Buying, selling, and bartering goods",
+      "category": "economic",
+      "tree": "economic",
+      "related_stats": ["money"],
+      "decay_rate": 0.1,
+      "max_level": 10,
+      "abilities": {
+        "keen_eye": {
+          "name": "Keen Eye for Value",
+          "description": "Better at spotting valuable items",
+          "level_required": 2,
+          "effects": {
+            "value_assessment": 20,
+            "item_quality_detection": 15
+          },
+          "passive": true,
+          "action_type": "appraisal"
+        },
+        "haggling": {
+          "name": "Haggling",
+          "description": "Better prices when buying and selling",
+          "level_required": 4,
+          "effects": {
+            "buy_price_reduction": 10,
+            "sell_price_increase": 15
+          },
+          "passive": true,
+          "action_type": "trade"
+        },
+        "network_trader": {
+          "name": "Network Trader",
+          "description": "Access to more trade options and special deals",
+          "level_required": 6,
+          "effects": {
+            "special_deal_chance": 20,
+            "rare_item_access": 15
+          },
+          "passive": true,
+          "action_type": "merchant_interaction"
+        },
+        "market_expert": {
+          "name": "Market Expert",
+          "description": "Deep understanding of market trends and price fluctuations",
+          "level_required": 8,
+          "effects": {
+            "market_insight": 25,
+            "economy_prediction": 20,
+            "bulk_trade_bonus": 15
+          },
+          "passive": true,
+          "action_type": "market_analysis"
+        }
+      }
+    },
+    "odd_jobs": {
+      "name": "Odd Jobs",
+      "description": "Finding and completing temporary work for money",
+      "category": "economic",
+      "tree": "economic",
+      "related_stats": ["money", "energy"],
+      "decay_rate": 0.15,
+      "max_level": 10,
+      "abilities": {
+        "job_finder": {
+          "name": "Job Finder",
+          "description": "Better at locating work opportunities",
+          "level_required": 2,
+          "effects": {
+            "job_discovery_chance": 25,
+            "job_variety": 20
+          },
+          "passive": true,
+          "action_type": "job_search"
+        },
+        "hard_worker": {
+          "name": "Hard Worker",
+          "description": "Jobs pay better and require less time",
+          "level_required": 3,
+          "effects": {
+            "job_pay_bonus": 15,
+            "job_time_reduction": 10
+          },
+          "passive": true,
+          "action_type": "job_completion"
+        },
+        "reputation_builder": {
+          "name": "Reputation Builder",
+          "description": "Build job reputation faster, unlocking better opportunities",
+          "level_required": 5,
+          "effects": {
+            "job_reputation_gain": 25,
+            "repeat_job_chance": 20
+          },
+          "passive": true,
+          "action_type": "job_network"
+        },
+        "efficiency_expert": {
+          "name": "Efficiency Expert",
+          "description": "Complete jobs using less energy and time",
+          "level_required": 7,
+          "effects": {
+            "job_energy_cost": -20,
+            "job_time_efficiency": 25
+          },
+          "passive": true,
+          "action_type": "job_performance"
+        }
+      }
+    },
+    "stress_management": {
+      "name": "Stress Management",
+      "description": "Techniques for managing mental stress and trauma",
+      "category": "mental",
+      "tree": "mental",
+      "related_stats": ["mental", "energy"],
+      "decay_rate": 0.05,
+      "max_level": 10,
+      "abilities": {
+        "calming_techniques": {
+          "name": "Calming Techniques",
+          "description": "Reduce stress more effectively during rest",
+          "level_required": 2,
+          "effects": {
+            "stress_reduction_rest": 25,
+            "mental_recovery_speed": 15
+          },
+          "passive": true,
+          "action_type": "rest"
+        },
+        "emotional_resilience": {
+          "name": "Emotional Resilience",
+          "description": "Less affected by negative events and setbacks",
+          "level_required": 3,
+          "effects": {
+            "negative_event_impact": -20,
+            "mental_stability": 15
+          },
+          "passive": true,
+          "action_type": "mental_state"
+        },
+        "sleep_quality": {
+          "name": "Sleep Quality",
+          "description": "Better mental recovery during sleep, even in poor conditions",
+          "level_required": 5,
+          "effects": {
+            "sleep_quality": 30,
+            "nightmare_chance": -50
+          },
+          "passive": true,
+          "action_type": "sleep"
+        },
+        "inner_strength": {
+          "name": "Inner Strength",
+          "description": "Maintain hope and motivation in difficult circumstances",
+          "level_required": 7,
+          "effects": {
+            "depression_resistance": 35,
+            "hope_regeneration": 20,
+            "crisis_stability": 30
+          },
+          "passive": true,
+          "action_type": "mental_crisis"
+        }
+      }
+    },
+    "endurance": {
+      "name": "Endurance",
+      "description": "Physical stamina and energy efficiency",
+      "category": "physical",
+      "tree": "physical",
+      "related_stats": ["energy", "health"],
+      "decay_rate": 0.1,
+      "max_level": 10,
+      "abilities": {
+        "energy_conservation": {
+          "name": "Energy Conservation",
+          "description": "Activities consume less energy",
+          "level_required": 2,
+          "effects": {
+            "energy_cost_reduction": 15
+          },
+          "passive": true,
+          "action_type": "energy"
+        },
+        "second_wind": {
+          "name": "Second Wind",
+          "description": "Chance to regain energy during strenuous activities",
+          "level_required": 4,
+          "effects": {
+            "energy_regen_chance": 20,
+            "energy_regen_amount": 10
+          },
+          "passive": true,
+          "action_type": "fatigue"
+        },
+        "efficient_movement": {
+          "name": "Efficient Movement",
+          "description": "Travel consumes less energy",
+          "level_required": 6,
+          "effects": {
+            "travel_energy_cost": -25,
+            "travel_speed": 15
+          },
+          "passive": true,
+          "action_type": "travel"
+        },
+        "iron_constitution": {
+          "name": "Iron Constitution",
+          "description": "Function effectively even when tired or hungry",
+          "level_required": 8,
+          "effects": {
+            "low_energy_penalty": -40,
+            "hunger_impact": -30
+          },
+          "passive": true,
+          "action_type": "physical_state"
+        }
+      }
+    },
+    "health_management": {
+      "name": "Health Management",
+      "description": "Taking care of physical health and treating minor injuries",
+      "category": "physical",
+      "tree": "physical",
+      "related_stats": ["health"],
+      "decay_rate": 0.05,
+      "max_level": 10,
+      "abilities": {
+        "first_aid": {
+          "name": "First Aid",
+          "description": "Better treatment of minor injuries",
+          "level_required": 2,
+          "effects": {
+            "injury_treatment": 25,
+            "bandage_effectiveness": 20
+          },
+          "passive": true,
+          "action_type": "treat_injury"
+        },
+        "illness_prevention": {
+          "name": "Illness Prevention",
+          "description": "Reduced chance of getting sick",
+          "level_required": 3,
+          "effects": {
+            "illness_chance": -30,
+            "hygiene_effectiveness": 25
+          },
+          "passive": true,
+          "action_type": "health_maintenance"
+        },
+        "pain_management": {
+          "name": "Pain Management",
+          "description": "Reduced impact of pain on activities",
+          "level_required": 5,
+          "effects": {
+            "pain_impact": -35,
+            "medication_effectiveness": 25
+          },
+          "passive": true,
+          "action_type": "pain"
+        },
+        "natural_healing": {
+          "name": "Natural Healing",
+          "description": "Faster natural recovery from injuries and illness",
+          "level_required": 7,
+          "effects": {
+            "healing_speed": 30,
+            "immune_response": 25
+          },
+          "passive": true,
+          "action_type": "recovery"
+        }
+      }
+    },
+    "crafting": {
+      "name": "Crafting",
+      "description": "Creating useful items from available materials",
+      "category": "economic",
+      "tree": "economic",
+      "related_stats": ["energy"],
+      "decay_rate": 0.1,
+      "max_level": 10,
+      "abilities": {
+        "resourceful_crafter": {
+          "name": "Resourceful Crafter",
+          "description": "Craft items using fewer materials",
+          "level_required": 2,
+          "effects": {
+            "material_requirement": -15,
+            "crafting_efficiency": 10
+          },
+          "passive": true,
+          "action_type": "crafting"
+        },
+        "quality_craftsmanship": {
+          "name": "Quality Craftsmanship",
+          "description": "Crafted items have higher quality and durability",
+          "level_required": 4,
+          "effects": {
+            "item_quality": 25,
+            "item_durability": 30
+          },
+          "passive": true,
+          "action_type": "crafting_quality"
+        },
+        "improvisation": {
+          "name": "Improvisation",
+          "description": "Create substitute items when ideal materials aren't available",
+          "level_required": 6,
+          "effects": {
+            "substitute_material_chance": 40,
+            "crafting_flexibility": 30
+          },
+          "passive": true,
+          "action_type": "crafting_innovation"
+        },
+        "expert_repairman": {
+          "name": "Expert Repairman",
+          "description": "Fix broken items more effectively and with fewer resources",
+          "level_required": 8,
+          "effects": {
+            "repair_effectiveness": 35,
+            "repair_resource_cost": -25
+          },
+          "passive": true,
+          "action_type": "repair"
+        }
+      }
+    }
+  }
+}

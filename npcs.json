@@ -1,0 +1,683 @@
+{
+    "shelter_worker": {
+        "id": "shelter_worker",
+        "name": "Maria",
+        "role": "shelter_worker",
+        "description": "A compassionate shelter worker who's seen it all but still maintains a positive attitude.",
+        "location": "Downtown",
+        "schedule": {
+            "Downtown": ["morning", "afternoon", "evening"],
+            "ByWard Market": ["night"]
+        },
+        "dialogue": {
+            "first_meeting": "Hello there. My name is Maria. I work at the shelter. Let me know if you need anything.",
+            "friendly": [
+                "Good to see you again! How have you been holding up?",
+                "Hey there! Always nice to see a familiar face."
+            ],
+            "neutral": [
+                "Hello again. Need some help?",
+                "What can I help you with today?"
+            ],
+            "unfriendly": [
+                "Yes?",
+                "What is it?"
+            ]
+        },
+        "services": [
+            {
+                "id": "shelter_bed",
+                "name": "Reserve Shelter Bed",
+                "description": "Reserve a bed for the night at the shelter.",
+                "effects": {
+                    "energy": 20,
+                    "mental": 10
+                }
+            }
+        ]
+    },
+    "outreach_worker": {
+        "id": "outreach_worker",
+        "name": "David",
+        "role": "outreach_worker",
+        "description": "An outreach worker who patrols the streets to help those in need. Carries a backpack of supplies.",
+        "location": "Various",
+        "schedule": {
+            "Downtown": ["afternoon"],
+            "ByWard Market": ["evening"],
+            "Lowertown": ["morning"],
+            "Vanier": ["night"],
+            "Overbrook": ["afternoon"]
+        },
+        "dialogue": {
+            "first_meeting": "Hi there, I'm David. I work with the street outreach program. Can I help you with anything today?",
+            "friendly": [
+                "Hey, good to see you again! How's everything going?",
+                "Hello friend! What do you need today?"
+            ],
+            "neutral": [
+                "Hello again. Need any supplies today?",
+                "How are you holding up? Need any assistance?"
+            ],
+            "unfriendly": [
+                "Let me know if you need anything.",
+                "What can I help you with?"
+            ],
+            "health": [
+                "If you're not feeling well, we have a mobile health clinic on Thursdays in Lowertown.",
+                "Make sure you're staying hydrated, especially in this weather."
+            ],
+            "resources": {
+                "high": [
+                    "Here's a map I've marked with all the resources in the area. This should help you navigate.",
+                    "I can refer you directly to our housing coordinator. They have a few emergency units available."
+                ],
+                "medium": [
+                    "The resource center on Bank Street has computers you can use to look for jobs or contact family.",
+                    "There's a community fridge behind the church on Elgin Street. Anyone can take what they need."
+                ],
+                "low": [
+                    "Here's a basic resource guide that lists shelters and meal programs.",
+                    "If you need immediate help, call this number or go to the drop-in center."
+                ]
+            }
+        },
+        "services": [
+            {
+                "id": "basic_supplies",
+                "name": "Basic Supplies",
+                "description": "Essential supplies like socks, hygiene items, etc.",
+                "effects": {
+                    "hygiene": 10,
+                    "item": ["Hygiene Kit", 1]
+                },
+                "success_message": "David gives you some basic supplies including a hygiene kit."
+            },
+            {
+                "id": "first_aid",
+                "name": "First Aid",
+                "description": "Basic first aid for minor injuries or health issues.",
+                "effects": {
+                    "health": 15
+                },
+                "success_message": "David provides first aid, treating your minor injuries."
+            },
+            {
+                "id": "resource_referral",
+                "name": "Resource Referral",
+                "description": "Information about services tailored to your needs.",
+                "min_disposition": 30,
+                "effects": {
+                    "housing_prospects": 3,
+                    "job_prospects": 3,
+                    "mental": 5
+                },
+                "success_message": "David provides personalized information about services that could help your situation."
+            }
+        ]
+    },
+    "café_owner": {
+        "id": "café_owner",
+        "name": "Sam",
+        "role": "business_owner",
+        "description": "The owner of a small café who has a soft spot for those in need but also has to run a business.",
+        "location": "Centretown",
+        "schedule": {
+            "Centretown": ["morning", "afternoon", "evening"],
+            "Glebe": ["morning"]
+        },
+        "dialogue": {
+            "first_meeting": "Welcome to my café. I'm Sam. Can't give away free food, but I might have some work if you're interested.",
+            "friendly": [
+                "Hey, good to see you! How are things going?",
+                "Welcome back! You're looking better today."
+            ],
+            "neutral": [
+                "Hello again. What brings you by today?",
+                "Need something?"
+            ],
+            "unfriendly": [
+                "Look, I'm trying to run a business here.",
+                "Please don't loiter unless you're going to buy something."
+            ],
+            "work": {
+                "high": [
+                    "I could use a reliable hand like you. Come by tomorrow morning and I'll have some paid work for you.",
+                    "You know, I might be able to offer you some regular shifts if you're interested."
+                ],
+                "medium": [
+                    "I sometimes need help with deliveries or cleaning. It's not much, but it's honest work.",
+                    "If you come by at closing time, I might have some tasks you can help with in exchange for a meal."
+                ],
+                "low": [
+                    "I can't hire someone I don't know. Prove you're reliable and we can talk.",
+                    "I have to be careful about who I let work here. My customers are particular."
+                ]
+            },
+            "food": [
+                "At the end of the day, I have to throw out unsold food. Come by around closing time if you need a meal.",
+                "There's a community fridge a few blocks from here where local businesses donate extra food."
+            ]
+        },
+        "services": [
+            {
+                "id": "leftover_food",
+                "name": "Leftover Food",
+                "description": "Unsold food from the day that would otherwise be thrown out.",
+                "min_disposition": 30,
+                "effects": {
+                    "hunger": -20,
+                    "mental": 5
+                },
+                "success_message": "Sam gives you some unsold pastries and a sandwich from the day's leftovers."
+            },
+            {
+                "id": "temp_work",
+                "name": "Temporary Work",
+                "description": "A few hours of work at the café for cash.",
+                "min_disposition": 50,
+                "effects": {
+                    "energy": -20,
+                    "money": 20,
+                    "job_prospects": 5,
+                    "mental": 10
+                },
+                "success_message": "You spend a few hours working at the café and earn some cash. The work experience could be valuable."
+            },
+            {
+                "id": "job_reference",
+                "name": "Job Reference",
+                "description": "A reference for other job applications.",
+                "min_disposition": 70,
+                "effects": {
+                    "job_prospects": 15,
+                    "housing_prospects": 5
+                },
+                "success_message": "Sam agrees to be a reference for your job applications, which significantly improves your prospects."
+            }
+        ]
+    },
+    "community_organizer": {
+        "id": "community_organizer",
+        "name": "Jordan",
+        "role": "community_organizer",
+        "description": "A dedicated community organizer who works on housing initiatives and advocacy for the homeless.",
+        "location": "Hintonburg",
+        "schedule": {
+            "Hintonburg": ["morning", "afternoon"],
+            "Downtown": ["evening"],
+            "Centretown": ["morning"]
+        },
+        "dialogue": {
+            "first_meeting": "Hi, I'm Jordan. I work with housing initiatives and advocacy for unhoused residents. Let me know if you want to get involved.",
+            "friendly": [
+                "Great to see you! How can I support you today?",
+                "Hello friend! Are you taking care of yourself?"
+            ],
+            "neutral": [
+                "Hello there. Need any information today?",
+                "Good to see you again. How's everything going?"
+            ],
+            "unfriendly": [
+                "Yes? What do you need?",
+                "How can I help you today?"
+            ],
+            "housing": {
+                "high": [
+                    "I've been advocating for more transitional housing units. I think I might be able to get you on the priority list.",
+                    "There's a new housing program starting next month. I can put your name forward as someone who's shown real initiative."
+                ],
+                "medium": [
+                    "Housing is tough right now, but there are a few programs you might qualify for. Let's look at the requirements.",
+                    "The waiting lists are long, but I know which applications get processed faster. I can show you how to apply."
+                ],
+                "low": [
+                    "To get housing, you'll need ID and some documentation. Start by getting those basics in order.",
+                    "Shelter beds are limited, but at least they provide a temporary solution while you work on something more permanent."
+                ]
+            },
+            "advocacy": [
+                "We're organizing a community forum next week about affordable housing. Your perspective would be valuable.",
+                "Sometimes sharing your story can help change public perception and policy. Would you be interested in talking to some community leaders?"
+            ]
+        },
+        "services": [
+            {
+                "id": "housing_application",
+                "name": "Housing Application Assistance",
+                "description": "Help filling out housing applications correctly.",
+                "effects": {
+                    "housing_prospects": 10,
+                    "mental": 5
+                },
+                "success_message": "Jordan helps you complete housing applications, significantly improving your chances."
+            },
+            {
+                "id": "advocacy_participation",
+                "name": "Participate in Advocacy",
+                "description": "Join advocacy efforts to earn respect and connections.",
+                "min_disposition": 40,
+                "effects": {
+                    "housing_prospects": 5,
+                    "job_prospects": 5,
+                    "mental": 10,
+                    "energy": -10
+                },
+                "success_message": "You participate in advocacy work with Jordan, making valuable connections and gaining respect in the community."
+            },
+            {
+                "id": "emergency_housing_referral",
+                "name": "Emergency Housing Referral",
+                "description": "Referral to emergency housing program.",
+                "min_disposition": 70,
+                "effects": {
+                    "housing_prospects": 20,
+                    "mental": 15
+                },
+                "success_message": "Jordan gives you a priority referral to an emergency housing program, significantly improving your housing situation."
+            }
+        ]
+    },
+    "experienced_homeless": {
+        "id": "experienced_homeless",
+        "name": "Ray",
+        "role": "experienced_homeless",
+        "description": "An older individual who has been homeless for years and knows all the ins and outs of street survival.",
+        "location": "Various",
+        "schedule": {
+            "Lowertown": ["afternoon", "night"],
+            "Downtown": ["morning"],
+            "ByWard Market": ["evening"],
+            "Lebreton Flats": ["night"]
+        },
+        "dialogue": {
+            "first_meeting": "Hey there, newbie. Name's Ray. Been on these streets for more years than I care to count. You look like you could use some advice.",
+            "friendly": [
+                "Hey kid, good to see you're still hanging in there!",
+                "Well look who it is! Still surviving the streets, eh?"
+            ],
+            "neutral": [
+                "Oh, it's you again. What's up?",
+                "Need something?"
+            ],
+            "unfriendly": [
+                "What do you want now?",
+                "I'm not a charity, you know."
+            ],
+            "survival": {
+                "high": [
+                    "Listen, I'm gonna tell you my best spots. Behind the Italian restaurant on Preston, they throw out good food at 10 PM sharp.",
+                    "There's an abandoned maintenance room in the parking garage on Slater. You can access it from the service door and it's warm in winter."
+                ],
+                "medium": [
+                    "The library is good during the day. Warm, quiet, and the staff usually won't bother you if you're not causing trouble.",
+                    "When it rains, the overhang behind the mall is dry and the security only checks there once a night around midnight."
+                ],
+                "low": [
+                    "You gotta be careful where you sleep. Some areas get checked by police, others have people who might take your stuff.",
+                    "Always have a backup plan for where to go. Weather changes, people kick you out, you need options."
+                ]
+            },
+            "police": [
+                "If the cops come around, be polite but don't volunteer information. Know your rights but don't argue.",
+                "Different cops treat us differently. Some are decent, some make it their mission to move us along. Learn which is which."
+            ],
+            "resources": [
+                "The mission on Murray Street has showers on Tuesdays and Thursdays. Go early though, line gets long.",
+                "Community health center doesn't ask for ID or health card. They're good people there."
+            ]
+        },
+        "services": [
+            {
+                "id": "survival_tips",
+                "name": "Survival Tips",
+                "description": "Practical advice for urban survival.",
+                "effects": {
+                    "skills": {"resourcefulness": 1},
+                    "mental": 5
+                },
+                "success_message": "Ray shares some hard-earned wisdom about surviving on the streets that could prove very valuable."
+            },
+            {
+                "id": "secret_locations",
+                "name": "Secret Locations",
+                "description": "Information about hidden resources and safe spots.",
+                "min_disposition": 60,
+                "effects": {
+                    "skills": {"navigation": 1},
+                    "housing_prospects": 5
+                },
+                "success_message": "Ray reveals several hidden spots for sleeping safely and finding resources that few people know about."
+            },
+            {
+                "id": "share_supplies",
+                "name": "Share Supplies",
+                "description": "Share some of Ray's carefully hoarded supplies.",
+                "min_disposition": 80,
+                "effects": {
+                    "item": ["Warm Clothes", 1],
+                    "item": ["Food", 1]
+                },
+                "success_message": "In a rare show of generosity, Ray shares some valuable supplies with you from a carefully hidden stash."
+            }
+        ]
+    },
+    "police_officer": {
+        "id": "police_officer",
+        "name": "Officer Chen",
+        "role": "police",
+        "description": "A police officer who patrols various areas. Generally fair but firm in enforcing regulations.",
+        "location": "Various",
+        "schedule": {
+            "Downtown": ["morning", "night"],
+            "ByWard Market": ["evening", "night"],
+            "Centretown": ["afternoon"],
+            "Glebe": ["afternoon"]
+        },
+        "dialogue": {
+            "first_meeting": "Hello there. I'm Officer Chen. I patrol this area regularly. Just keeping things safe, not looking to cause anyone trouble who's not causing trouble.",
+            "friendly": [
+                "Hello again. Everything alright today?",
+                "Good to see you. Staying out of trouble, I hope?"
+            ],
+            "neutral": [
+                "Afternoon. Everything ok here?",
+                "Just doing my rounds. Any issues I should know about?"
+            ],
+            "unfriendly": [
+                "I need you to move along, please.",
+                "This isn't a loitering area."
+            ],
+            "regulations": {
+                "high": [
+                    "Look, I understand your situation. As long as you're not blocking access or disturbing anyone, I won't give you trouble.",
+                    "There's a warming center opening tonight at the community hall. Just FYI if you need somewhere to go."
+                ],
+                "medium": [
+                    "I have to enforce the bylaws, but I'm not out to make your life harder. Just be discreet and considerate.",
+                    "Try to avoid sleeping in doorways of businesses. It creates complaints I have to respond to."
+                ],
+                "low": [
+                    "You can't camp here. I'll have to ask you to move your belongings.",
+                    "This area has had complaints from businesses. I'm going to need you to move along."
+                ]
+            },
+            "safety": [
+                "If anyone's threatening you or stealing your things, you can report it. You have the same rights as anyone else.",
+                "Be careful around the north end of the market after dark. We've had several incidents there recently."
+            ]
+        },
+        "services": [
+            {
+                "id": "safety_information",
+                "name": "Safety Information",
+                "description": "Information about dangerous areas or situations to avoid.",
+                "effects": {
+                    "mental": 5
+                },
+                "success_message": "Officer Chen shares some important safety information about areas to avoid and current risks in the city."
+            },
+            {
+                "id": "resource_direction",
+                "name": "Resource Direction",
+                "description": "Directions to legitimate services and resources.",
+                "min_disposition": 40,
+                "effects": {
+                    "housing_prospects": 3,
+                    "mental": 5
+                },
+                "success_message": "Officer Chen directs you to some legitimate services and resources that might help your situation."
+            },
+            {
+                "id": "incident_report",
+                "name": "File Incident Report",
+                "description": "Report crimes or incidents that affected you.",
+                "min_disposition": 60,
+                "effects": {
+                    "mental": 10
+                },
+                "success_message": "Officer Chen takes your report seriously and files it properly, giving you a sense that your concerns matter."
+            }
+        ]
+    },
+    "social_worker": {
+        "id": "social_worker",
+        "name": "Sophia",
+        "role": "social_worker",
+        "description": "A dedicated social worker who helps people navigate the system to access benefits and services.",
+        "location": "Centretown",
+        "schedule": {
+            "Centretown": ["morning", "afternoon"],
+            "Downtown": ["morning"],
+            "ByWard Market": ["afternoon"]
+        },
+        "dialogue": {
+            "first_meeting": "Hello, I'm Sophia. I work as a social worker with the city. I can help you navigate different services and benefits you might be eligible for.",
+            "friendly": [
+                "It's good to see you again! How has your week been?",
+                "Hello! I was hoping I'd run into you. Have you made any progress?"
+            ],
+            "neutral": [
+                "Hello. Do you need assistance with anything today?",
+                "How are things going with your applications?"
+            ],
+            "unfriendly": [
+                "I'm here to help if you need it.",
+                "Let me know if you need assistance with any services."
+            ],
+            "benefits": {
+                "high": [
+                    "There's a special program I think you would qualify for. Let me make a direct referral for you.",
+                    "I've been keeping an eye out for opportunities for you. There's a new housing voucher program opening applications next week."
+                ],
+                "medium": [
+                    "Make sure you're applying for all the benefits you're entitled to. The process is complicated but I can guide you.",
+                    "The wait lists are long, but getting your name on them now is important. I can help with the paperwork."
+                ],
+                "low": [
+                    "You'll need some identification documents to access most services. Let's start by figuring out how to get those.",
+                    "The system can be overwhelming, but taking it one step at a time makes it manageable."
+                ]
+            },
+            "health": [
+                "Mental health services are available regardless of your housing situation. I can connect you if you'd like.",
+                "Don't neglect your health. There are clinics that will see you without insurance or ID."
+            ]
+        },
+        "services": [
+            {
+                "id": "benefits_application",
+                "name": "Benefits Application Assistance",
+                "description": "Help applying for government benefits and services.",
+                "effects": {
+                    "housing_prospects": 8,
+                    "mental": 5
+                },
+                "success_message": "Sophia helps you complete several applications for benefits you might qualify for."
+            },
+            {
+                "id": "id_recovery",
+                "name": "ID Recovery Assistance",
+                "description": "Help obtaining replacement identification documents.",
+                "min_disposition": 40,
+                "effects": {
+                    "job_prospects": 8,
+                    "housing_prospects": 8,
+                    "money": -10
+                },
+                "success_message": "Sophia walks you through the process of replacing your lost ID, which will be essential for accessing many services."
+            },
+            {
+                "id": "crisis_intervention",
+                "name": "Crisis Intervention",
+                "description": "Emergency assistance during personal crises.",
+                "min_disposition": 30,
+                "effects": {
+                    "mental": 15,
+                    "health": 5
+                },
+                "success_message": "Sophia provides crucial support during your moment of crisis, helping you stabilize and focus on next steps."
+            }
+        ]
+    },
+    "kind_citizen": {
+        "id": "kind_citizen",
+        "name": "Eleanor",
+        "role": "citizen",
+        "description": "A retired teacher who volunteers with various community initiatives and often helps those in need.",
+        "location": "Glebe",
+        "schedule": {
+            "Glebe": ["morning", "afternoon"],
+            "Centretown": ["afternoon"],
+            "ByWard Market": ["morning"]
+        },
+        "dialogue": {
+            "first_meeting": "Hello there. I'm Eleanor. I volunteer with several community programs in the area. Is there anything you need today?",
+            "friendly": [
+                "Oh, hello again! It's good to see you. How have you been?",
+                "Hello there! I was just thinking about you. Are you keeping well?"
+            ],
+            "neutral": [
+                "Hello. Nice to see you again.",
+                "How are you doing today?"
+            ],
+            "unfriendly": [
+                "Hello. Can I help you with something?",
+                "Do you need assistance?"
+            ],
+            "community": {
+                "high": [
+                    "I'd be happy to introduce you to some of my contacts at the community center. They're always looking for reliable help.",
+                    "There's a neighborhood meeting next week about local services. Would you like to come as my guest? Your perspective would be valuable."
+                ],
+                "medium": [
+                    "The community garden always needs volunteers. It's a good way to meet people and they share the harvest.",
+                    "The library runs a job skills program that might interest you. I could put in a good word with the coordinator."
+                ],
+                "low": [
+                    "There are several community programs that might help you. The food bank on Third Street doesn't require registration.",
+                    "If you need a warm place during the day, the community center welcomes everyone. They even have free coffee."
+                ]
+            },
+            "personal": [
+                "I taught elementary school for thirty years. Now I volunteer to keep busy and help the community.",
+                "I believe everyone deserves kindness and respect, regardless of their circumstances."
+            ]
+        },
+        "services": [
+            {
+                "id": "hot_meal",
+                "name": "Provide a Meal",
+                "description": "Offer a hot, home-cooked meal.",
+                "effects": {
+                    "hunger": -35,
+                    "mental": 10
+                },
+                "success_message": "Eleanor brings you a container of homemade soup and fresh bread. It's the best meal you've had in a long time."
+            },
+            {
+                "id": "community_introduction",
+                "name": "Community Introductions",
+                "description": "Introductions to helpful community members.",
+                "min_disposition": 50,
+                "effects": {
+                    "job_prospects": 5,
+                    "housing_prospects": 5,
+                    "mental": 5
+                },
+                "success_message": "Eleanor introduces you to several influential community members who might be able to help with your situation."
+            },
+            {
+                "id": "warm_clothes",
+                "name": "Winter Clothing",
+                "description": "Provide warm clothing for cold weather.",
+                "min_disposition": 30,
+                "effects": {
+                    "inventory": {"Warm Clothes": 1},
+                    "health": 5
+                },
+                "success_message": "Eleanor gives you a warm jacket, gloves, and a scarf she knitted herself."
+            }
+        ]
+    },
+    "street_musician": {
+        "id": "street_musician",
+        "name": "Marcus",
+        "role": "street_performer",
+        "description": "A talented guitarist who performs on the streets and has experienced homelessness himself in the past.",
+        "location": "ByWard Market",
+        "schedule": {
+            "ByWard Market": ["afternoon", "evening"],
+            "Downtown": ["afternoon"],
+            "Hintonburg": ["evening"]
+        },
+        "dialogue": {
+            "first_meeting": "Hey, I'm Marcus. I play music here most days. Been where you are before, so I get it. Feel free to hang nearby - people often tip better when they see us helping each other.",
+            "friendly": [
+                "Hey friend! Good to see you. Wanna hear a tune?",
+                "What's good? Still surviving out here?"
+            ],
+            "neutral": [
+                "Hey there. How's it going?",
+                "Alright, what's up?"
+            ],
+            "unfriendly": [
+                "Yeah?",
+                "What do you need?"
+            ],
+            "music": [
+                "Music kept me sane when I was on the streets. Still does, really.",
+                "I make enough to rent a room now, but it took years to get there. Keep pushing forward."
+            ],
+            "survival": {
+                "high": [
+                    "Street performing can be decent money if you find the right spots and times. I could show you some basics if you're interested.",
+                    "I know which shelter staff can be trusted and which ones to avoid. Let me give you the inside scoop."
+                ],
+                "medium": [
+                    "If you're gonna sleep outside, do it near places with security cameras. Safer that way.",
+                    "The tourist areas are good for panhandling, but the cops move you along faster. Trade-offs, you know?"
+                ],
+                "low": [
+                    "Keep your important stuff close when you sleep. I learned that the hard way.",
+                    "Don't let your stuff look too organized on the street. Makes you a target for theft."
+                ]
+            }
+        },
+        "services": [
+            {
+                "id": "share_earnings",
+                "name": "Share Performance Earnings",
+                "description": "Share some of the day's music earnings.",
+                "effects": {
+                    "money": 8,
+                    "mental": 5
+                },
+                "success_message": "Marcus splits some of his earnings with you. 'We gotta look out for each other,' he says."
+            },
+            {
+                "id": "busking_lesson",
+                "name": "Busking Lesson",
+                "description": "Learn basics of street performing for income.",
+                "min_disposition": 60,
+                "effects": {
+                    "skills": {"social": 1},
+                    "job_prospects": 5
+                },
+                "success_message": "Marcus teaches you some basics about where to perform, how to engage passersby, and the unwritten rules of street performing."
+            },
+            {
+                "id": "performance_spot",
+                "name": "Share Performance Spot",
+                "description": "Allow you to collect money while he performs.",
+                "min_disposition": 80,
+                "effects": {
+                    "money": 15,
+                    "energy": -10,
+                    "mental": 5
+                },
+                "success_message": "Marcus lets you collect tips while he performs, introducing you as his 'manager.' People are generous and you collect a decent amount."
+            }
+        ]
+    }
+}

@@ -1,0 +1,175 @@
+[
+  {
+    "id": "recipe_insulated_clothing",
+    "name": "Insulated Clothing",
+    "description": "Improve your clothing's insulation with newspaper layers.",
+    "skill_required": "Craft",
+    "skill_level": 1,
+    "ingredients": [
+      {
+        "id": "clothing_jacket",
+        "quantity": 1
+      },
+      {
+        "id": "misc_newspaper",
+        "quantity": 2
+      },
+      {
+        "id": "crafting_duct_tape",
+        "quantity": 1
+      }
+    ],
+    "result": {
+      "id": "clothing_jacket",
+      "quantity": 1,
+      "modifiers": {
+        "effects.temperature.value": 5,
+        "tags": ["insulated"]
+      }
+    },
+    "time_to_craft": 1
+  },
+  {
+    "id": "recipe_water_collector",
+    "name": "Simple Water Collector",
+    "description": "A device to collect rainwater for drinking.",
+    "skill_required": "Craft",
+    "skill_level": 2,
+    "ingredients": [
+      {
+        "id": "misc_empty_bottle",
+        "quantity": 2
+      },
+      {
+        "id": "crafting_string",
+        "quantity": 1
+      },
+      {
+        "id": "crafting_cloth",
+        "quantity": 1
+      }
+    ],
+    "result": {
+      "id": "tool_water_collector",
+      "quantity": 1
+    },
+    "time_to_craft": 2
+  },
+  {
+    "id": "recipe_makeshift_blanket",
+    "name": "Makeshift Blanket",
+    "description": "A simple blanket made from newspaper and cloth.",
+    "skill_required": "Craft",
+    "skill_level": 1,
+    "ingredients": [
+      {
+        "id": "misc_newspaper",
+        "quantity": 3
+      },
+      {
+        "id": "crafting_cloth",
+        "quantity": 2
+      },
+      {
+        "id": "crafting_duct_tape",
+        "quantity": 1
+      }
+    ],
+    "result": {
+      "id": "clothing_makeshift_blanket",
+      "quantity": 1
+    },
+    "time_to_craft": 1
+  },
+  {
+    "id": "recipe_bandage",
+    "name": "Makeshift Bandage",
+    "description": "A simple bandage made from clean cloth.",
+    "skill_required": "Craft",
+    "skill_level": 1,
+    "ingredients": [
+      {
+        "id": "crafting_cloth",
+        "quantity": 1
+      }
+    ],
+    "result": {
+      "id": "medicine_bandage",
+      "quantity": 1
+    },
+    "time_to_craft": 0.5
+  },
+  {
+    "id": "recipe_repair_clothing",
+    "name": "Repair Clothing",
+    "description": "Repair damaged clothing to restore its durability.",
+    "skill_required": "Craft",
+    "skill_level": 1,
+    "ingredients": [
+      {
+        "id": "crafting_cloth",
+        "quantity": 1
+      },
+      {
+        "id": "crafting_string",
+        "quantity": 1
+      }
+    ],
+    "result": {
+      "type": "repair",
+      "target_category": "clothing",
+      "durability_restore": 20
+    },
+    "time_to_craft": 1
+  },
+  {
+    "id": "recipe_insulated_sleeping_area",
+    "name": "Insulated Sleeping Area",
+    "description": "Create a warmer sleeping area using newspapers and cloth.",
+    "skill_required": "Survival",
+    "skill_level": 2,
+    "ingredients": [
+      {
+        "id": "misc_newspaper",
+        "quantity": 4
+      },
+      {
+        "id": "crafting_cloth",
+        "quantity": 2
+      },
+      {
+        "id": "tool_sleeping_bag",
+        "quantity": 1
+      }
+    ],
+    "result": {
+      "id": "shelter_insulated_sleeping_area",
+      "quantity": 1
+    },
+    "time_to_craft": 1.5
+  },
+  {
+    "id": "recipe_can_stove",
+    "name": "Can Stove",
+    "description": "A simple cooking stove made from cans.",
+    "skill_required": "Craft",
+    "skill_level": 3,
+    "ingredients": [
+      {
+        "id": "food_canned_beans",
+        "quantity": 2,
+        "consumed": false
+      },
+      {
+        "id": "tool_can_opener",
+        "quantity": 1,
+        "consumed": false
+      }
+    ],
+    "result": {
+      "id": "tool_can_stove",
+      "quantity": 1
+    },
+    "time_to_craft": 2
+  }
+]

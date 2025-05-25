@@ -1,0 +1,531 @@
+{
+    "Downtown": {
+        "name": "Downtown",
+        "description": "The busy downtown core with businesses, offices, and pedestrian traffic. A hub of activity but also of surveillance.",
+        "danger_level": 5,
+        "food_availability": 0.7,
+        "shelter_options": {
+            "City Mission Shelter": {"quality": "medium", "cost": 0, "warmth": 0.8, "security": 0.7},
+            "Downtown Alley": {"quality": "low", "cost": 0, "warmth": 0.3, "security": 0.2},
+            "Public Park Bench": {"quality": "low", "cost": 0, "warmth": 0.1, "security": 0.4}
+        },
+        "connected_locations": ["ByWard Market", "Centretown", "Lebreton Flats"],
+        "travel_time": 1,
+        "period_modifiers": {
+            "morning": {"danger": -1, "food": 0.1, "social": 0.2},
+            "afternoon": {"danger": -1, "food": 0.2, "social": 0.3},
+            "evening": {"danger": 0, "food": 0.1, "social": 0.1},
+            "night": {"danger": 2, "food": -0.2, "social": -0.3}
+        },
+        "services": [
+            {
+                "name": "Drop-in Center",
+                "hours": "8:00-16:00",
+                "description": "Provides meals and basic services during the day.",
+                "requirements": {"none": true},
+                "benefits": {
+                    "food": 20,
+                    "hygiene": 15,
+                    "mental": 5
+                }
+            },
+            {
+                "name": "Public Library",
+                "hours": "9:00-21:00",
+                "description": "Warm place to rest and access computers. Good for job searching.",
+                "requirements": {"hygiene": 30},
+                "benefits": {
+                    "mental": 10,
+                    "job_prospects": 5,
+                    "skills": ["computer_literacy"]
+                }
+            }
+        ],
+        "quest_areas": {
+            "Financial District": {
+                "available_periods": ["morning", "afternoon"],
+                "quest_types": ["panhandling", "bottle_collection", "courier_work"],
+                "difficulty": 2
+            },
+            "Government Buildings": {
+                "available_periods": ["morning", "afternoon"],
+                "quest_types": ["social_services", "documentation", "legal_aid"],
+                "difficulty": 1
+            }
+        },
+        "npc_hotspots": {
+            "Coffee Shop Corner": {
+                "active_periods": ["morning", "afternoon"],
+                "npc_types": ["office_worker", "student", "tourist"]
+            },
+            "Bus Terminal": {
+                "active_periods": ["morning", "afternoon", "evening"],
+                "npc_types": ["commuter", "security_guard", "street_vendor"]
+            }
+        },
+        "discovery_text": "You find yourself in the busy downtown core of Ottawa. The streets are filled with office workers and tourists. Security cameras watch from above, and police regularly patrol the area."
+    },
+    "ByWard Market": {
+        "name": "ByWard Market",
+        "description": "A historic market district with food vendors, restaurants, and nightlife.",
+        "danger_level": 4,
+        "food_availability": 0.8,
+        "shelter_options": {
+            "Market Alleyway": "low",
+            "Youth Shelter": "high"
+        },
+        "connected_locations": ["Downtown", "Lowertown", "Sandy Hill"],
+        "travel_time": 1,
+        "period_modifiers": {
+            "morning": {"danger": -1, "food": 0.2},
+            "afternoon": {"danger": -1, "food": 0.1},
+            "evening": {"danger": 0, "food": 0.3},
+            "night": {"danger": 2, "food": 0.1}
+        },
+        "services": [
+            {"name": "Food Bank", "hours": "10:00-14:00", "description": "Provides food packages once per week."},
+            {"name": "Community Kitchen", "hours": "11:00-13:00", "description": "Offers a hot meal at lunchtime."}
+        ],
+        "discovery_text": "The ByWard Market is bustling with activity. The smell of food wafts from numerous vendors and restaurants."
+    },
+    "Centretown": {
+        "name": "Centretown",
+        "description": "A mixed residential and commercial area with apartment buildings and small businesses.",
+        "danger_level": 3,
+        "food_availability": 0.5,
+        "shelter_options": {
+            "Community Center": "medium",
+            "Apartment Building Stairwell": "low"
+        },
+        "connected_locations": ["Downtown", "Glebe", "Little Italy"],
+        "travel_time": 1,
+        "period_modifiers": {
+            "morning": {"danger": -1, "food": 0},
+            "afternoon": {"danger": -1, "food": 0.1},
+            "evening": {"danger": 0, "food": 0},
+            "night": {"danger": 1, "food": -0.1}
+        },
+        "services": [
+            {"name": "Health Clinic", "hours": "9:00-17:00", "description": "Provides basic healthcare for those in need."},
+            {"name": "Community Support Center", "hours": "8:30-16:30", "description": "Offers assistance with housing applications and support services."}
+        ],
+        "discovery_text": "Centretown is a quieter area with a mix of apartment buildings and small businesses."
+    },
+    "Lebreton Flats": {
+        "name": "Lebreton Flats",
+        "description": "A developing area with open spaces and construction sites.",
+        "danger_level": 6,
+        "food_availability": 0.3,
+        "shelter_options": {
+            "Abandoned Construction Site": "low",
+            "Undeveloped Lot": "low"
+        },
+        "connected_locations": ["Downtown", "Hintonburg", "Mechanicsville"],
+        "travel_time": 1,
+        "period_modifiers": {
+            "morning": {"danger": 0, "food": -0.1},
+            "afternoon": {"danger": -1, "food": 0},
+            "evening": {"danger": 1, "food": -0.1},
+            "night": {"danger": 2, "food": -0.2}
+        },
+        "services": [
+            {"name": "Outreach Van", "hours": "19:00-22:00", "description": "Mobile service providing basic supplies and support."}
+        ],
+        "discovery_text": "Lebreton Flats is mostly open space with construction sites. It feels exposed but has some hidden corners."
+    },
+    "Lowertown": {
+        "name": "Lowertown",
+        "description": "A historic neighborhood with a mix of housing, shelters, and social services.",
+        "danger_level": 7,
+        "food_availability": 0.5,
+        "shelter_options": {
+            "Main Shelter": "medium",
+            "Underpass Camp": "low"
+        },
+        "connected_locations": ["ByWard Market", "Sandy Hill", "Vanier"],
+        "travel_time": 1,
+        "period_modifiers": {
+            "morning": {"danger": 0, "food": 0},
+            "afternoon": {"danger": -1, "food": 0.1},
+            "evening": {"danger": 1, "food": 0},
+            "night": {"danger": 3, "food": -0.1}
+        },
+        "services": [
+            {"name": "Soup Kitchen", "hours": "17:00-19:00", "description": "Provides evening meals."},
+            {"name": "Clothing Bank", "hours": "13:00-16:00", "description": "Offers free clothing and personal items."}
+        ],
+        "discovery_text": "Lowertown has a gritty feel but also houses many services for those in need."
+    },
+    "Sandy Hill": {
+        "name": "Sandy Hill",
+        "description": "A residential area with student housing, apartments, and the University of Ottawa.",
+        "danger_level": 2,
+        "food_availability": 0.4,
+        "shelter_options": {
+            "Student Center": "medium",
+            "Campus Building": "low"
+        },
+        "connected_locations": ["ByWard Market", "Lowertown", "Vanier"],
+        "travel_time": 1,
+        "period_modifiers": {
+            "morning": {"danger": -1, "food": 0},
+            "afternoon": {"danger": -1, "food": 0.1},
+            "evening": {"danger": 0, "food": 0.2},
+            "night": {"danger": 1, "food": 0}
+        },
+        "services": [
+            {"name": "University Cafeteria", "hours": "7:00-19:00", "description": "Sometimes has leftover food at closing time."},
+            {"name": "Student Health Services", "hours": "9:00-16:00", "description": "Can provide basic medical care in emergencies."}
+        ],
+        "discovery_text": "Sandy Hill is filled with student housing and university buildings. Young people hurry to and from classes."
+    },
+    "Vanier": {
+        "name": "Vanier",
+        "description": "A diverse neighborhood east of downtown with affordable housing and immigrant communities.",
+        "danger_level": 6,
+        "food_availability": 0.6,
+        "shelter_options": {
+            "Community Housing": "medium",
+            "Wooded Area": "low"
+        },
+        "connected_locations": ["Lowertown", "Sandy Hill", "Overbrook"],
+        "travel_time": 2,
+        "period_modifiers": {
+            "morning": {"danger": 0, "food": 0.1},
+            "afternoon": {"danger": -1, "food": 0.1},
+            "evening": {"danger": 1, "food": 0},
+            "night": {"danger": 2, "food": -0.2}
+        },
+        "services": [
+            {"name": "Cultural Food Bank", "hours": "11:00-15:00", "description": "Provides culturally diverse food options."},
+            {"name": "Employment Center", "hours": "9:00-17:00", "description": "Offers job search assistance and training programs."}
+        ],
+        "discovery_text": "Vanier is a melting pot of cultures with various small shops and community spaces."
+    },
+    "Hintonburg": {
+        "name": "Hintonburg",
+        "description": "An up-and-coming neighborhood with art studios, coffee shops, and gentrifying streets.",
+        "danger_level": 3,
+        "food_availability": 0.5,
+        "shelter_options": {
+            "Art Space": "medium",
+            "Industrial Building": "low"
+        },
+        "connected_locations": ["Lebreton Flats", "Mechanicsville", "Westboro"],
+        "travel_time": 2,
+        "period_modifiers": {
+            "morning": {"danger": -1, "food": 0.1},
+            "afternoon": {"danger": -2, "food": 0.2},
+            "evening": {"danger": -1, "food": 0.1},
+            "night": {"danger": 1, "food": -0.1}
+        },
+        "services": [
+            {"name": "Community Art Center", "hours": "10:00-18:00", "description": "Offers free programs and a warm place to stay during the day."},
+            {"name": "Coffee Shop Donations", "hours": "20:00-21:00", "description": "Some cafes give away unsold food at closing time."}
+        ],
+        "discovery_text": "Hintonburg has a creative vibe with murals on buildings and small galleries scattered about."
+    },
+    "Mechanicsville": {
+        "name": "Mechanicsville",
+        "description": "A riverside working-class neighborhood with industrial history.",
+        "danger_level": 5,
+        "food_availability": 0.4,
+        "shelter_options": {
+            "Riverside Camp": "low",
+            "Warehouse": "low"
+        },
+        "connected_locations": ["Lebreton Flats", "Hintonburg"],
+        "travel_time": 1,
+        "period_modifiers": {
+            "morning": {"danger": 0, "food": 0},
+            "afternoon": {"danger": -1, "food": 0.1},
+            "evening": {"danger": 0, "food": 0},
+            "night": {"danger": 2, "food": -0.1}
+        },
+        "services": [
+            {"name": "Workers' Aid Center", "hours": "7:00-15:00", "description": "Provides day labor opportunities and basic services."}
+        ],
+        "discovery_text": "Mechanicsville sits by the river with old industrial buildings and modest homes."
+    },
+    "Glebe": {
+        "name": "Glebe",
+        "description": "An affluent neighborhood with upscale shops, restaurants, and the TD Place stadium.",
+        "danger_level": 2,
+        "food_availability": 0.6,
+        "shelter_options": {
+            "Park Pavilion": "low",
+            "Stadium Area": "low"
+        },
+        "connected_locations": ["Centretown", "Old Ottawa South"],
+        "travel_time": 2,
+        "period_modifiers": {
+            "morning": {"danger": -1, "food": 0.1},
+            "afternoon": {"danger": -1, "food": 0.2},
+            "evening": {"danger": 0, "food": 0.2},
+            "night": {"danger": 1, "food": 0}
+        },
+        "services": [
+            {"name": "Community Center", "hours": "8:00-22:00", "description": "Has public washrooms and occasional community meals."},
+            {"name": "Stadium Events", "hours": "varies", "description": "Opportunities for bottle collection and leftover food after events."}
+        ],
+        "discovery_text": "The Glebe is clearly affluent, with well-kept homes and trendy shops. People here seem to have money to spare."
+    },
+    "Westboro": {
+        "name": "Westboro",
+        "description": "A trendy neighborhood with outdoor retailers, restaurants, and beach access.",
+        "danger_level": 2,
+        "food_availability": 0.5,
+        "shelter_options": {
+            "Beach Area": "low",
+            "Wooded Park": "medium"
+        },
+        "connected_locations": ["Hintonburg", "Nepean"],
+        "travel_time": 3,
+        "period_modifiers": {
+            "morning": {"danger": -1, "food": 0},
+            "afternoon": {"danger": -1, "food": 0.1},
+            "evening": {"danger": 0, "food": 0.2},
+            "night": {"danger": 1, "food": -0.1}
+        },
+        "services": [
+            {"name": "Outdoor Store Donations", "hours": "19:00-20:00", "description": "Some stores donate unsold food and occasionally equipment."},
+            {"name": "Beach Facilities", "hours": "6:00-23:00", "description": "Public washrooms and water fountains available seasonally."}
+        ],
+        "discovery_text": "Westboro has an outdoor lifestyle vibe with shops selling expensive gear and a beach along the river."
+    },
+    "Overbrook": {
+        "name": "Overbrook",
+        "description": "A diverse residential area with a mix of housing types and community facilities.",
+        "danger_level": 4,
+        "food_availability": 0.4,
+        "shelter_options": {
+            "Community Center": "medium",
+            "Train Yard": "low"
+        },
+        "connected_locations": ["Vanier", "Train Yards"],
+        "travel_time": 2,
+        "period_modifiers": {
+            "morning": {"danger": 0, "food": 0},
+            "afternoon": {"danger": -1, "food": 0.1},
+            "evening": {"danger": 0, "food": 0},
+            "night": {"danger": 2, "food": -0.1}
+        },
+        "services": [
+            {"name": "Recreation Center", "hours": "6:00-22:00", "description": "Public facilities and occasional community programs."},
+            {"name": "Food Pantry", "hours": "14:00-16:00 (Wed/Fri)", "description": "Provides food packages twice weekly."}
+        ],
+        "discovery_text": "Overbrook is a quiet residential area with community facilities and varied housing types."
+    },
+    "Train Yards": {
+        "name": "Train Yards",
+        "description": "A shopping district with big box stores and parking lots.",
+        "danger_level": 4,
+        "food_availability": 0.6,
+        "shelter_options": {
+            "Loading Area": "low",
+            "Abandoned Structure": "low"
+        },
+        "connected_locations": ["Overbrook", "St. Laurent"],
+        "travel_time": 2,
+        "period_modifiers": {
+            "morning": {"danger": 0, "food": 0},
+            "afternoon": {"danger": -1, "food": 0.2},
+            "evening": {"danger": 0, "food": 0.1},
+            "night": {"danger": 1, "food": -0.2}
+        },
+        "services": [
+            {"name": "Grocery Store Dumpster", "hours": "always", "description": "Sometimes has discarded but still edible food."},
+            {"name": "Food Court", "hours": "10:00-21:00", "description": "Leftover food sometimes available at closing time."}
+        ],
+        "discovery_text": "The Train Yards is a sprawling shopping complex with large stores and vast parking lots."
+    },
+    "Little Italy": {
+        "name": "Little Italy",
+        "description": "A vibrant neighborhood with Italian restaurants, cafes, and cultural influence.",
+        "danger_level": 3,
+        "food_availability": 0.7,
+        "shelter_options": {
+            "Church Basement": "medium",
+            "Preston Street Alley": "low"
+        },
+        "connected_locations": ["Centretown", "Hintonburg"],
+        "travel_time": 2,
+        "period_modifiers": {
+            "morning": {"danger": -1, "food": 0.1},
+            "afternoon": {"danger": -1, "food": 0.2},
+            "evening": {"danger": 0, "food": 0.3},
+            "night": {"danger": 1, "food": 0}
+        },
+        "services": [
+            {"name": "Church Outreach", "hours": "9:00-12:00 (Sunday)", "description": "Provides meals and basic necessities after Sunday service."},
+            {"name": "Restaurant Back Doors", "hours": "21:00-23:00", "description": "Some restaurants give away leftover food at closing time."}
+        ],
+        "discovery_text": "Little Italy is filled with the aroma of food from restaurants and cafes lining Preston Street."
+    },
+    "Old Ottawa South": {
+        "name": "Old Ottawa South",
+        "description": "A residential neighborhood with family homes, small businesses, and proximity to the Rideau Canal.",
+        "danger_level": 2,
+        "food_availability": 0.4,
+        "shelter_options": {
+            "Canal Area": "low",
+            "School Grounds": "low"
+        },
+        "connected_locations": ["Glebe", "Billings Bridge"],
+        "travel_time": 2,
+        "period_modifiers": {
+            "morning": {"danger": -1, "food": 0},
+            "afternoon": {"danger": -1, "food": 0.1},
+            "evening": {"danger": 0, "food": 0},
+            "night": {"danger": 1, "food": -0.1}
+        },
+        "services": [
+            {"name": "Community Fridge", "hours": "always", "description": "Public fridge where people leave free food for those in need."},
+            {"name": "Mayfair Theatre", "hours": "varies", "description": "Occasional free community screenings and a warm place during cold weather."}
+        ],
+        "discovery_text": "Old Ottawa South has a neighborly feel with quiet streets, well-kept homes, and the Rideau Canal nearby."
+    },
+    "Nepean": {
+        "name": "Nepean",
+        "description": "A large suburban district with residential areas, shopping centers, and business parks.",
+        "danger_level": 3,
+        "food_availability": 0.5,
+        "shelter_options": {
+            "Suburban Shelter": "medium",
+            "Wooded Area": "low"
+        },
+        "connected_locations": ["Westboro", "Barrhaven"],
+        "travel_time": 4,
+        "period_modifiers": {
+            "morning": {"danger": -1, "food": 0},
+            "afternoon": {"danger": -1, "food": 0.1},
+            "evening": {"danger": 0, "food": 0},
+            "night": {"danger": 1, "food": -0.2}
+        },
+        "services": [
+            {"name": "Suburban Food Bank", "hours": "10:00-14:00 (Mon/Wed)", "description": "Provides food packages twice weekly."},
+            {"name": "Mall Food Court", "hours": "10:00-21:00", "description": "Warm place to rest during mall hours with occasional food opportunities."}
+        ],
+        "discovery_text": "Nepean stretches out with its suburban landscape of houses, strip malls, and the occasional park."
+    },
+    "Billings Bridge": {
+        "name": "Billings Bridge",
+        "description": "An area centered around the Billings Bridge Shopping Centre and transitway station.",
+        "danger_level": 3,
+        "food_availability": 0.6,
+        "shelter_options": {
+            "Shopping Center": "medium",
+            "Transit Station": "low"
+        },
+        "connected_locations": ["Old Ottawa South", "Alta Vista"],
+        "travel_time": 2,
+        "period_modifiers": {
+            "morning": {"danger": -1, "food": 0.1},
+            "afternoon": {"danger": -1, "food": 0.2},
+            "evening": {"danger": 0, "food": 0.1},
+            "night": {"danger": 1, "food": -0.1}
+        },
+        "services": [
+            {"name": "Transit Station", "hours": "5:00-1:00", "description": "Heated shelter during operating hours and transit connections."},
+            {"name": "Food Court", "hours": "10:00-21:00", "description": "Warm place with water fountains and occasional food opportunities."}
+        ],
+        "discovery_text": "Billings Bridge is dominated by its shopping mall and busy transit station, with constant movement of people."
+    },
+    "St. Laurent": {
+        "name": "St. Laurent",
+        "description": "A commercial area around the St. Laurent Shopping Centre and industrial spaces.",
+        "danger_level": 4,
+        "food_availability": 0.5,
+        "shelter_options": {
+            "Mall Areas": "medium",
+            "Industrial Spaces": "low"
+        },
+        "connected_locations": ["Train Yards", "Vanier"],
+        "travel_time": 3,
+        "period_modifiers": {
+            "morning": {"danger": 0, "food": 0},
+            "afternoon": {"danger": -1, "food": 0.2},
+            "evening": {"danger": 0, "food": 0.1},
+            "night": {"danger": 2, "food": -0.1}
+        },
+        "services": [
+            {"name": "Mall Food Court", "hours": "10:00-21:00", "description": "Warm place with occasional food opportunities."},
+            {"name": "Transit Station", "hours": "5:00-1:00", "description": "Sheltered waiting area and transit connections."}
+        ],
+        "discovery_text": "St. Laurent is centered around its large shopping mall and transit hub, with industrial areas nearby."
+    },
+    "Barrhaven": {
+        "name": "Barrhaven",
+        "description": "A suburban community with residential developments, schools, and shopping centers.",
+        "danger_level": 2,
+        "food_availability": 0.4,
+        "shelter_options": {
+            "Park Areas": "low",
+            "Community Center": "medium"
+        },
+        "connected_locations": ["Nepean"],
+        "travel_time": 5,
+        "period_modifiers": {
+            "morning": {"danger": -1, "food": 0},
+            "afternoon": {"danger": -1, "food": 0.1},
+            "evening": {"danger": 0, "food": 0},
+            "night": {"danger": 1, "food": -0.2}
+        },
+        "services": [
+            {"name": "Community Food Cupboard", "hours": "13:00-16:00 (Tues/Fri)", "description": "Small food bank operated by local churches."},
+            {"name": "Walter Baker Recreation Centre", "hours": "6:00-23:00", "description": "Public facilities and warm shelter during operating hours."}
+        ],
+        "discovery_text": "Barrhaven is a sprawling suburban community with housing developments and strip malls spread across a large area."
+    },
+    "Rideau Centre": {
+        "name": "Rideau Centre",
+        "description": "A major shopping mall in downtown Ottawa, offering shelter from weather and various resources.",
+        "danger_level": 3,
+        "food_availability": 0.8,
+        "shelter_options": {
+            "Food Court": {"quality": "medium", "cost": 0, "warmth": 0.9, "security": 0.7},
+            "Mall Corridors": {"quality": "low", "cost": 0, "warmth": 0.8, "security": 0.5}
+        },
+        "connected_locations": ["ByWard Market", "Downtown"],
+        "travel_time": 1,
+        "period_modifiers": {
+            "morning": {"danger": -1, "food": 0.2, "social": 0.3},
+            "afternoon": {"danger": -1, "food": 0.3, "social": 0.4},
+            "evening": {"danger": 0, "food": 0.2, "social": 0.2},
+            "night": {"danger": 2, "food": -0.2, "social": -0.3}
+        },
+        "services": [
+            {
+                "name": "Public Restrooms",
+                "hours": "9:00-21:00",
+                "description": "Clean facilities for basic hygiene.",
+                "benefits": {
+                    "hygiene": 10
+                }
+            }
+        ]
+    },
+    "Alta Vista": {
+        "name": "Alta Vista",
+        "description": "A mature residential neighborhood with the General Hospital and medical facilities.",
+        "danger_level": 2,
+        "food_availability": 0.3,
+        "shelter_options": {
+            "Hospital Waiting Room": "medium",
+            "Park Area": "low"
+        },
+        "connected_locations": ["Billings Bridge", "Train Yards"],
+        "travel_time": 3,
+        "period_modifiers": {
+            "morning": {"danger": -1, "food": 0},
+            "afternoon": {"danger": -1, "food": 0},
+            "evening": {"danger": 0, "food": 0},
+            "night": {"danger": 1, "food": -0.1}
+        },
+        "services": [
+            {"name": "Hospital Emergency", "hours": "24/7", "description": "Medical care for emergencies and warm waiting area."},
+            {"name": "Community Center", "hours": "8:00-22:00", "description": "Public facilities and occasional community programs."}
+        ],
+        "discovery_text": "Alta Vista is a quiet residential area known for the sprawling hospital complex that dominates part of the neighborhood."
+    }
+}

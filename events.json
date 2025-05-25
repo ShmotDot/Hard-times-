@@ -1,0 +1,1628 @@
+{
+    "food_search_success": {
+        "id": "food_search_success",
+        "title": "Found Food",
+        "description": "You search through a dumpster behind a restaurant and discover some discarded but still edible food.",
+        "choices": [
+            {
+                "text": "Take the food and eat it now",
+                "outcomes": {
+                    "hunger": -20,
+                    "health": -5,
+                    "mental": 5,
+                    "message": "The food satisfies your hunger, though it's not the most hygienic meal."
+                }
+            },
+            {
+                "text": "Take the food and save it for later",
+                "outcomes": {
+                    "inventory": {"Food": 1},
+                    "message": "You carefully pack the food away for when you might need it more."
+                }
+            },
+            {
+                "text": "Leave it, it doesn't look safe",
+                "outcomes": {
+                    "mental": 2,
+                    "message": "Better safe than sorry. Your hunger remains, but at least you won't risk getting sick."
+                }
+            }
+        ],
+        "type": "food"
+    },
+    "kind_stranger": {
+        "id": "kind_stranger",
+        "title": "Kind Stranger",
+        "description": "A passerby notices your situation and approaches with a sympathetic expression.",
+        "choices": [
+            {
+                "text": "Accept their help graciously",
+                "outcomes": {
+                    "money": 5,
+                    "mental": 10,
+                    "message": "They give you $5 and wish you well. The small kindness lifts your spirits."
+                }
+            },
+            {
+                "text": "Ask if they could buy you a meal instead",
+                "outcomes": {
+                    "hunger": -30,
+                    "mental": 5,
+                    "message": "They take you to a nearby fast food place and buy you a meal. You feel much better."
+                }
+            },
+            {
+                "text": "Politely decline",
+                "outcomes": {
+                    "mental": 2,
+                    "message": "You thank them but explain you'll be okay. They nod respectfully and continue on."
+                }
+            }
+        ],
+        "type": "encounter"
+    },
+    "police_interaction": {
+        "id": "police_interaction",
+        "title": "Police Interaction",
+        "description": "A police officer approaches and asks you to move along from where you're resting.",
+        "choices": [
+            {
+                "text": "Comply politely and move on",
+                "outcomes": {
+                    "energy": -5,
+                    "message": "You gather your things and move elsewhere. It's tiring, but at least there's no trouble."
+                }
+            },
+            {
+                "text": "Explain your situation and ask for resources",
+                "outcomes": {
+                    "mental": 5,
+                    "message": "The officer listens and provides information about a nearby shelter you weren't aware of."
+                },
+                "requirements": {
+                    "skills": {"social": 2}
+                }
+            },
+            {
+                "text": "Argue that you have a right to be here",
+                "outcomes": {
+                    "mental": -10,
+                    "message": "The confrontation becomes tense. Eventually you have to move anyway, and now you're stressed."
+                }
+            }
+        ],
+        "requirements": {
+            "time_period": ["evening", "night"]
+        },
+        "type": "authority"
+    },
+    "bad_weather": {
+        "id": "bad_weather",
+        "title": "Weather Turns Bad",
+        "description": "The weather suddenly deteriorates. Rain begins to pour down heavily, and you need to find shelter quickly.",
+        "choices": [
+            {
+                "text": "Rush to the nearest overpass for cover",
+                "outcomes": {
+                    "energy": -10,
+                    "message": "You make it to an overpass just in time. It's not comfortable, but you stay relatively dry."
+                }
+            },
+            {
+                "text": "Try to make it to a public building",
+                "outcomes": {
+                    "health": -5,
+                    "energy": -15,
+                    "hygiene": -10,
+                    "message": "You get soaked before finding a library to dry off in. At least you're inside now."
+                }
+            },
+            {
+                "text": "Use a tarp from your inventory",
+                "outcomes": {
+                    "message": "You quickly create a makeshift shelter with your tarp. It's not perfect, but it keeps the worst of the rain off."
+                },
+                "requirements": {
+                    "inventory": {"Tarp": 1}
+                }
+            }
+        ],
+        "requirements": {
+            "weather": ["rain", "storm"]
+        },
+        "type": "weather"
+    },
+    "free_meal_program": {
+        "id": "free_meal_program",
+        "title": "Community Meal Program",
+        "description": "You notice a sign for a free community meal being served at a nearby church.",
+        "choices": [
+            {
+                "text": "Go to the meal service",
+                "outcomes": {
+                    "hunger": -40,
+                    "mental": 10,
+                    "message": "You enjoy a hot meal and brief conversation with others. The volunteers are kind and non-judgmental."
+                }
+            },
+            {
+                "text": "Volunteer to help in exchange for food",
+                "outcomes": {
+                    "hunger": -35,
+                    "mental": 15,
+                    "skills": {"social": 1},
+                    "message": "You help serve others before eating yourself. The organizers appreciate your help and remember your face."
+                }
+            },
+            {
+                "text": "Skip it and look elsewhere",
+                "outcomes": {
+                    "message": "You decide not to attend and continue on your way."
+                }
+            }
+        ],
+        "requirements": {
+            "time_period": ["afternoon", "evening"]
+        },
+        "type": "food"
+    },
+    "theft_attempt": {
+        "id": "theft_attempt",
+        "title": "Theft Attempt",
+        "description": "While resting, you notice someone trying to steal your backpack.",
+        "choices": [
+            {
+                "text": "Confront them directly",
+                "outcomes": {
+                    "energy": -10,
+                    "mental": -5,
+                    "message": "You shout and grab your bag. The thief runs off, but the confrontation leaves you shaken."
+                }
+            },
+            {
+                "text": "Call for help",
+                "outcomes": {
+                    "mental": -10,
+                    "message": "Your shouts attract attention. The thief flees, but some passersby look at you with suspicion."
+                }
+            },
+            {
+                "text": "Try to chase them",
+                "outcomes": {
+                    "energy": -20,
+                    "mental": -5,
+                    "message": "You chase after them, eventually recovering your belongings, but you're exhausted."
+                },
+                "requirements": {
+                    "player_stats": {"energy": {"min": 40}}
+                }
+            }
+        ],
+        "requirements": {
+            "location_type": ["high_danger", "medium_danger"],
+            "time_period": ["evening", "night"]
+        },
+        "type": "danger"
+    },
+    "housing_opportunity": {
+        "id": "housing_opportunity",
+        "title": "Housing Program Opportunity",
+        "description": "You learn about a new housing program accepting applications.",
+        "choices": [
+            {
+                "text": "Apply for the program",
+                "outcomes": {
+                    "energy": -5,
+                    "housing_prospects": 10,
+                    "message": "You spend time filling out the application forms."
+                }
+            },
+            {
+                "text": "Skip it - seems like too much hassle",
+                "outcomes": {
+                    "message": "You decide not to apply."
+                }
+            }
+        ],
+        "type": "housing"
+    },
+    "shelter_full": {
+        "id": "shelter_full",
+        "title": "Shelter is Full",
+        "description": "You arrive at a shelter looking for a place to sleep, but they've reached capacity for the night.",
+        "choices": [
+            {
+                "text": "Ask about alternative shelters",
+                "outcomes": {
+                    "energy": -5,
+                    "message": "The staff suggests another shelter across town. You'll have to hurry to make it before they fill up too."
+                }
+            },
+            {
+                "text": "Ask if you can at least stay in the lobby",
+                "outcomes": {
+                    "energy": 10,
+                    "mental": -5,
+                    "message": "They allow you to sleep in a chair in the lobby. It's not comfortable, but it's better than outside."
+                },
+                "requirements": {
+                    "reputation": {"shelters": 2}
+                }
+            },
+            {
+                "text": "Leave and find a place outside",
+                "outcomes": {
+                    "health": -10,
+                    "energy": -15,
+                    "message": "You find a hidden spot to sleep rough. The night is cold and uncomfortable."
+                }
+            }
+        ],
+        "requirements": {
+            "time_period": ["evening", "night"]
+        },
+        "type": "shelter"
+    },
+    "job_opportunity": {
+        "id": "job_opportunity",
+        "title": "Day Labor Opportunity",
+        "description": "A local business owner is looking for someone to help with a small job today.",
+        "choices": [
+            {
+                "text": "Accept the work opportunity",
+                "outcomes": {
+                    "money": 30,
+                    "energy": -30,
+                    "job_prospects": 5,
+                    "message": "You spend the day working hard. The pay isn't much, but it's something, and the owner says they'll keep you in mind for future work."
+                }
+            },
+            {
+                "text": "Negotiate for better pay",
+                "outcomes": {
+                    "money": 40,
+                    "energy": -30,
+                    "job_prospects": 3,
+                    "message": "You manage to negotiate a better rate. The work is tiring but rewarding."
+                },
+                "requirements": {
+                    "skills": {"social": 3}
+                }
+            },
+            {
+                "text": "Decline, you need to focus on other priorities",
+                "outcomes": {
+                    "message": "You thank them but explain you have other pressing matters to attend to today."
+                }
+            }
+        ],
+        "requirements": {
+            "time_period": ["morning", "afternoon"]
+        },
+        "type": "opportunity"
+    },
+    "illness": {
+        "id": "illness",
+        "title": "Feeling Ill",
+        "description": "You wake up feeling feverish and weak. You might be coming down with something.",
+        "choices": [
+            {
+                "text": "Try to rest and recover",
+                "outcomes": {
+                    "health": 5,
+                    "energy": 5,
+                    "hunger": 10,
+                    "message": "You spend the day resting as much as possible. You feel slightly better by evening."
+                }
+            },
+            {
+                "text": "Seek medical attention at a clinic",
+                "outcomes": {
+                    "health": 15,
+                    "energy": -10,
+                    "money": -5,
+                    "message": "The clinic provides basic treatment and some medication. It costs a little money, but you feel much better."
+                },
+                "requirements": {
+                    "player_stats": {"money": {"min": 5}}
+                }
+            },
+            {
+                "text": "Ignore it and carry on",
+                "outcomes": {
+                    "health": -15,
+                    "energy": -10,
+                    "message": "You push through the day despite feeling terrible. By evening, your condition has worsened."
+                }
+            }
+        ],
+        "requirements": {
+            "player_stats": {"health": {"max": 60}}
+        },
+        "type": "health"
+    },
+    "outreach_worker": {
+        "id": "outreach_worker",
+        "title": "Outreach Worker",
+        "description": "A social worker from an outreach program approaches you and offers assistance.",
+        "choices": [
+            {
+                "text": "Accept help and discuss your situation",
+                "outcomes": {
+                    "housing_prospects": 10,
+                    "mental": 15,
+                    "inventory": {"Resource Guide": 1},
+                    "message": "You have a lengthy conversation about available resources. They give you a guide with helpful information and contacts."
+                }
+            },
+            {
+                "text": "Ask specifically about housing options",
+                "outcomes": {
+                    "housing_prospects": 15,
+                    "message": "They provide detailed information about housing programs and add your name to a waiting list for transitional housing."
+                }
+            },
+            {
+                "text": "Thank them but decline assistance for now",
+                "outcomes": {
+                    "message": "You're not ready to engage with services yet. They leave their contact information in case you change your mind."
+                }
+            }
+        ],
+        "type": "opportunity"
+    },
+    "found_clothing": {
+        "id": "found_clothing",
+        "title": "Donation Bin",
+        "description": "You notice a clothing donation bin. It might have something useful inside.",
+        "choices": [
+            {
+                "text": "Check if there are accessible donations",
+                "outcomes": {
+                    "inventory": {"Warm Clothes": 1},
+                    "hygiene": 10,
+                    "message": "You find some clean, warm clothes that fit you. Changing into them makes you feel much better."
+                }
+            },
+            {
+                "text": "Try to reach inside the bin for more items",
+                "outcomes": {
+                    "inventory": {"Warm Clothes": 1, "Blanket": 1},
+                    "hygiene": 10,
+                    "message": "You manage to retrieve both clothes and a blanket. These will be very useful."
+                },
+                "requirements": {
+                    "skills": {"resourcefulness": 2}
+                }
+            },
+            {
+                "text": "Leave it alone, it's not right to take from donations",
+                "outcomes": {
+                    "mental": 5,
+                    "message": "You decide not to take anything, maintaining your principles despite your needs."
+                }
+            }
+        ],
+        "type": "resource"
+    },
+    "found_money": {
+        "id": "found_money",
+        "title": "Found Money",
+        "description": "While walking down the street, you spot some money on the ground.",
+        "choices": [
+            {
+                "text": "Take it, you need it more than whoever lost it",
+                "outcomes": {
+                    "money": 10,
+                    "message": "You pocket $10. It could make a real difference for your immediate needs."
+                }
+            },
+            {
+                "text": "Look around to see if someone dropped it recently",
+                "outcomes": {
+                    "mental": 10,
+                    "money": 5,
+                    "message": "You look around but don't see an obvious owner. A passerby notices your honesty and gives you $5 as a reward."
+                }
+            },
+            {
+                "text": "Leave it, it belongs to someone else",
+                "outcomes": {
+                    "mental": 15,
+                    "message": "Despite your own needs, you choose not to take what isn't yours. Your integrity remains intact."
+                }
+            }
+        ],
+        "type": "opportunity"
+    },
+    "gang_encounter": {
+        "id": "gang_encounter",
+        "title": "Gang Territory",
+        "description": "You've wandered into gang-controlled territory. A few tough-looking individuals approach you menacingly.",
+        "type": "combat",
+        "choices": [
+            {
+                "text": "Try to leave quietly",
+                "outcomes": {
+                    "energy": -10,
+                    "message": "You manage to slip away before the situation escalates."
+                }
+            },
+            {
+                "text": "Explain you're just passing through",
+                "outcomes": {
+                    "mental": -5,
+                    "message": "They warn you to stay out of their territory but let you go this time."
+                },
+                "requirements": {
+                    "skills": {"persuasion": 2}
+                }
+            },
+            {
+                "text": "Stand your ground",
+                "outcomes": {
+                    "health": -20,
+                    "mental": -10,
+                    "message": "The confrontation turns violent. You take a beating but manage to get away."
+                }
+            }
+        ]
+    },
+    "police_patrol": {
+        "id": "police_patrol",
+        "title": "Police Patrol",
+        "description": "A police patrol spots you in an area known for illegal activity.",
+        "type": "combat",
+        "choices": [
+            {
+                "text": "Stay calm and cooperate",
+                "outcomes": {
+                    "mental": -5,
+                    "message": "The officers question you but eventually let you go."
+                }
+            },
+            {
+                "text": "Try to slip away",
+                "outcomes": {
+                    "energy": -15,
+                    "heat": 20,
+                    "message": "You manage to evade the patrol but they'll be looking for you now."
+                },
+                "requirements": {
+                    "skills": {"stealth": 2}
+                }
+            },
+            {
+                "text": "Run",
+                "outcomes": {
+                    "energy": -25,
+                    "heat": 30,
+                    "message": "You run but they radio ahead. You'll need to lay low for a while."
+                }
+            }
+        ]
+    },
+    "shelter_bully": {
+        "id": "shelter_bully",
+        "title": "Shelter Conflict",
+        "description": "At the shelter, another resident is being aggressive and trying to intimidate others.",
+        "choices": [
+            {
+                "text": "Stand up to them",
+                "outcomes": {
+                    "reputation": {"shelters": 2},
+                    "mental": -5,
+                    "message": "You confront them and they eventually back down. Others appreciate your intervention but it was stressful."
+                }
+            },
+            {
+                "text": "Alert shelter staff",
+                "outcomes": {
+                    "reputation": {"shelters": 1},
+                    "message": "Staff intervene and defuse the situation. They thank you for bringing it to their attention."
+                }
+            },
+            {
+                "text": "Keep to yourself and avoid conflict",
+                "outcomes": {
+                    "energy": -5,
+                    "message": "You stay out of it, but have to remain vigilant which is tiring. The situation eventually calms down."
+                }
+            }
+        ],
+        "type": "shelter"
+    },
+    "helpful_information": {
+        "id": "helpful_information",
+        "title": "Local Knowledge",
+        "description": "You meet someone who's been homeless in Ottawa for years and knows all the best spots and resources.",
+        "choices": [
+            {
+                "text": "Ask about food resources",
+                "outcomes": {
+                    "skills": {"foraging": 1},
+                    "message": "They share detailed information about which places offer free meals on which days, and which dumpsters are safe to check."
+                }
+            },
+            {
+                "text": "Ask about safe places to sleep",
+                "outcomes": {
+                    "skills": {"navigation": 1},
+                    "message": "They point out several hidden spots where police rarely check and you'll be safe from the elements."
+                }
+            },
+            {
+                "text": "Ask about services and programs",
+                "outcomes": {
+                    "housing_prospects": 5,
+                    "message": "They tell you about several programs you weren't aware of that might help you get back on your feet."
+                }
+            }
+        ],
+        "type": "opportunity"
+    },
+    "volunteer_opportunity": {
+        "id": "volunteer_opportunity",
+        "title": "Volunteer Opportunity",
+        "description": "A community center is looking for volunteers to help with an event. Volunteers will receive a meal and small stipend.",
+        "choices": [
+            {
+                "text": "Volunteer for the full day",
+                "outcomes": {
+                    "hunger": -40,
+                    "money": 15,
+                    "energy": -25,
+                    "job_prospects": 10,
+                    "mental": 10,
+                    "message": "You spend the day helping out. The work is tiring but rewarding, and you make some good connections."
+                }
+            },
+            {
+                "text": "Volunteer for a few hours",
+                "outcomes": {
+                    "hunger": -30,
+                    "money": 5,
+                    "energy": -10,
+                    "job_prospects": 5,
+                    "mental": 5,
+                    "message": "You help for part of the day. It's a positive experience and you get a good meal."
+                }
+            },
+            {
+                "text": "Decline and focus on other priorities",
+                "outcomes": {
+                    "message": "You decide your time and energy is better spent elsewhere today."
+                }
+            }
+        ],
+        "requirements": {
+            "time_period": ["morning", "afternoon"]
+        },
+        "type": "opportunity"
+    },
+    "winter_cold": {
+        "id": "winter_cold",
+        "title": "Bitter Cold",
+        "description": "The temperature has dropped dangerously low. Your current clothing isn't adequate for this weather.",
+        "choices": [
+            {
+                "text": "Find shelter immediately",
+                "outcomes": {
+                    "energy": -10,
+                    "message": "You struggle against the cold, desperately looking for somewhere warm."
+                }
+            },
+            {
+                "text": "Keep moving to stay warm",
+                "outcomes": {
+                    "energy": -15,
+                    "health": -5,
+                    "message": "You keep moving, hoping to generate enough body heat to survive."
+                }
+            },
+            {
+                "text": "Try to find warmer clothes",
+                "outcomes": {
+                    "energy": -8,
+                    "message": "You search for anything that might provide more insulation."
+                }
+            }
+        ],
+        "type": "weather",
+        "chain_events": {
+            "find_shelter": "shelter_found",
+            "keep_moving": "hypothermia_risk",
+            "warmer_clothes": "found_clothing"
+        },
+    "shelter_found": {
+        "id": "shelter_found",
+        "title": "Emergency Shelter",
+        "description": "You've managed to find an emergency warming center that's taking people in.",
+        "choices": [
+            {
+                "text": "Accept the help",
+                "outcomes": {
+                    "health": 10,
+                    "energy": 15,
+                    "mental": 5,
+                    "message": "The warmth is a welcome relief from the bitter cold."
+                }
+            }
+        ],
+        "type": "chain"
+    },
+    
+    "found_clothing": {
+        "id": "found_clothing",
+        "title": "Warm Layer Found",
+        "description": "After searching desperately, you find a discarded winter coat in a donation bin. It's not in great condition, but it could save your life in this weather.",
+        "choices": [
+            {
+                "text": "Take the coat and put it on immediately",
+                "outcomes": {
+                    "health": 5,
+                    "mental": 5,
+                    "inventory": {"Warm Clothes": 1},
+                    "message": "The extra layer immediately helps against the biting cold. You can't believe your luck."
+                }
+            },
+            {
+                "text": "Look for something better",
+                "outcomes": {
+                    "energy": -10,
+                    "health": -5,
+                    "message": "You decide to keep looking for something in better condition, but the continued exposure takes its toll."
+                }
+            }
+        ],
+        "type": "chain"
+    },
+    
+    "hypothermia_risk": {
+        "id": "hypothermia_risk",
+        "title": "Dangerous Cold",
+        "description": "Your body temperature is dropping dangerously low.",
+        "choices": [
+            {
+                "text": "Seek immediate help",
+                "outcomes": {
+                    "health": -10,
+                    "energy": -20,
+                    "message": "You realize you need to find shelter immediately."
+                }
+            }
+        ],
+        "type": "chain"
+    },
+    
+    "blizzard_warning": {
+        "id": "blizzard_warning",
+        "title": "Incoming Blizzard",
+        "description": "Weather reports warn of a severe blizzard approaching the city.",
+        "type": "weather",
+        "choices": [
+            {
+                "text": "Prepare and find shelter early",
+                "outcomes": {
+                    "energy": -10,
+                    "message": "You spend time securing what you need and finding a safe place before the storm hits."
+                }
+            },
+            {
+                "text": "Help others prepare",
+                "outcomes": {
+                    "mental": 15,
+                    "energy": -20,
+                    "reputation": {"community": 2},
+                    "message": "You work with others to ensure everyone has a safe place to weather the storm."
+                }
+            }
+        ],
+        "requirements": {
+            "weather": ["snow", "storm"]
+        }
+    },
+        "choices": [
+            {
+                "text": "Find an indoor public space",
+                "outcomes": {
+                    "energy": -10,
+                    "message": "You spend hours moving between public buildings to stay warm. It's exhausting but keeps you from freezing."
+                }
+            },
+            {
+                "text": "Use your warm clothes",
+                "outcomes": {
+                    "message": "Your extra layers provide crucial protection against the cold."
+                },
+                "requirements": {
+                    "inventory": {"Warm Clothes": 1}
+                }
+            },
+            {
+                "text": "Try to make it to a shelter",
+                "outcomes": {
+                    "health": -15,
+                    "energy": -20,
+                    "message": "You trek through the cold to reach a shelter. The journey is brutal, but you eventually find warmth."
+                }
+            }
+        ],
+        "requirements": {
+            "weather": ["snow"],
+            "player_stats": {"health": {"min": 20}}
+        },
+        "type": "weather"
+    },
+    "panhandling": {
+        "id": "panhandling",
+        "title": "Asking for Help",
+        "description": "You're desperate for some money and consider asking passersby for spare change.",
+        "choices": [
+            {
+                "text": "Find a busy corner and ask politely",
+                "outcomes": {
+                    "money": 8,
+                    "mental": -5,
+                    "energy": -5,
+                    "message": "After a few hours, you collect about $8. The experience is humbling but necessary."
+                }
+            },
+            {
+                "text": "Create a sign explaining your situation",
+                "outcomes": {
+                    "money": 12,
+                    "mental": -5,
+                    "energy": -3,
+                    "message": "Your honest sign resonates with some passersby. You collect about $12 over several hours."
+                },
+                "requirements": {
+                    "skills": {"resourcefulness": 1}
+                }
+            },
+            {
+                "text": "Look for work opportunities instead",
+                "outcomes": {
+                    "job_prospects": 3,
+                    "energy": -10,
+                    "message": "You ask around for odd jobs instead of handouts. You don't make any money today, but make some potentially useful contacts."
+                }
+            }
+        ],
+        "type": "resource"
+    },
+    "library_resource": {
+        "id": "library_resource",
+        "title": "Library Opportunity",
+        "description": "While warming up in the public library, you notice they have free computer access and job resources.",
+        "choices": [
+            {
+                "text": "Use the computer to search for jobs",
+                "outcomes": {
+                    "job_prospects": 10,
+                    "energy": -5,
+                    "message": "You spend a few hours applying for jobs and researching opportunities. Your prospects are improving."
+                }
+            },
+            {
+                "text": "Research housing programs",
+                "outcomes": {
+                    "housing_prospects": 10,
+                    "energy": -5,
+                    "message": "You discover several housing assistance programs you might qualify for and complete some online applications."
+                }
+            },
+            {
+                "text": "Just rest and stay warm",
+                "outcomes": {
+                    "energy": 10,
+                    "mental": 5,
+                    "message": "You take advantage of the comfortable environment to rest. It's a welcome break from the stress of the streets."
+                }
+            }
+        ],
+        "requirements": {
+            "time_period": ["morning", "afternoon"]
+        },
+        "type": "opportunity",
+        "chain_events": {
+            "housing": "housing_application"
+        }
+    },
+    
+    "housing_application": {
+        "id": "housing_application",
+        "title": "Housing Application",
+        "description": "You've been notified that your application for subsidized housing is being reviewed. You need to attend an interview to complete the process.",
+        "choices": [
+            {
+                "text": "Prepare thoroughly for the interview",
+                "outcomes": {
+                    "energy": -10,
+                    "mental": -5,
+                    "housing_prospects": 15,
+                    "message": "You spend time gathering documents and preparing answers to likely questions."
+                }
+            },
+            {
+                "text": "Show up as you are",
+                "outcomes": {
+                    "housing_prospects": 5,
+                    "message": "You decide to just be yourself and hope for the best."
+                }
+            }
+        ],
+        "type": "chain",
+        "chain_events": {
+            "prepare": "housing_interview_success",
+            "show": "housing_interview_challenge"
+        }
+    },
+    
+    "housing_interview_success": {
+        "id": "housing_interview_success",
+        "title": "Housing Interview",
+        "description": "Your preparation pays off. The housing officer is impressed by your organization and commitment.",
+        "choices": [
+            {
+                "text": "Accept the housing offer",
+                "outcomes": {
+                    "housing_prospects": 50,
+                    "mental": 25,
+                    "money": -50,
+                    "story_flags": ["housing_secure"],
+                    "message": "You're offered a spot in a subsidized housing unit! It will take a security deposit, but you'll have stable housing."
+                },
+                "requirements": {
+                    "player_stats": {"money": {"min": 50}}
+                }
+            },
+            {
+                "text": "Ask about payment assistance",
+                "outcomes": {
+                    "housing_prospects": 40,
+                    "mental": 15,
+                    "message": "They connect you with a program that can help with the security deposit, but it will take time to process."
+                }
+            }
+        ],
+        "type": "chain"
+    },
+    
+    "housing_interview_challenge": {
+        "id": "housing_interview_challenge",
+        "title": "Difficult Housing Interview",
+        "description": "The housing officer seems skeptical about your application and asks for additional documentation you don't have ready.",
+        "choices": [
+            {
+                "text": "Ask for help getting the documents",
+                "outcomes": {
+                    "housing_prospects": 20,
+                    "mental": 5,
+                    "message": "They refer you to a social worker who can help you obtain the necessary documents, though it will delay your application."
+                }
+            },
+            {
+                "text": "Get frustrated with the bureaucracy",
+                "outcomes": {
+                    "housing_prospects": -10,
+                    "mental": -15,
+                    "message": "Your frustration shows, and the interview ends poorly. You'll need to start the application process over."
+                }
+            }
+        ],
+        "type": "chain"
+    },
+    "helping_others": {
+        "id": "helping_others",
+        "title": "Chance to Help",
+        "description": "You notice another homeless person struggling with their belongings and looking disoriented.",
+        "choices": [
+            {
+                "text": "Offer assistance and advice",
+                "outcomes": {
+                    "mental": 15,
+                    "energy": -5,
+                    "message": "You help them get situated and share some of your knowledge. The gratitude in their eyes gives you a sense of purpose."
+                }
+            },
+            {
+                "text": "Share some of your food",
+                "outcomes": {
+                    "mental": 20,
+                    "message": "You offer some of your food. They're deeply grateful, and helping someone else makes your own troubles seem more manageable."
+                },
+                "requirements": {
+                    "inventory": {"Food": 1}
+                }
+            },
+            {
+                "text": "Keep to yourself, you have your own problems",
+                "outcomes": {
+                    "mental": -5,
+                    "message": "You decide you can't afford to help others when your own situation is so precarious."
+                }
+            }
+        ],
+        "type": "encounter"
+    },
+    "public_shower": {
+        "id": "public_shower",
+        "title": "Shower Opportunity",
+        "description": "You discover that a community center offers free shower facilities for those in need.",
+        "choices": [
+            {
+                "text": "Use the shower facilities",
+                "outcomes": {
+                    "hygiene": 40,
+                    "mental": 10,
+                    "health": 5,
+                    "message": "The hot shower feels incredible. You feel refreshed, clean, and more human."
+                }
+            },
+            {
+                "text": "Ask about other available services",
+                "outcomes": {
+                    "hygiene": 40,
+                    "mental": 10,
+                    "housing_prospects": 5,
+                    "message": "After your shower, you speak with staff who provide information about other services that might help you."
+                }
+            },
+            {
+                "text": "Skip it, you're too uncomfortable using public facilities",
+                "outcomes": {
+                    "message": "You decide not to use the facilities this time, though you make note of their availability for the future."
+                }
+            }
+        ],
+        "type": "resource"
+    },
+    "community_garden": {
+        "id": "community_garden",
+        "title": "Community Garden",
+        "description": "You come across a community garden where volunteers are working.",
+        "choices": [
+            {
+                "text": "Offer to help in exchange for some produce",
+                "outcomes": {
+                    "hunger": -15,
+                    "energy": -10,
+                    "mental": 10,
+                    "message": "You spend a couple hours helping weed and water. The volunteers share some fresh vegetables with you."
+                }
+            },
+            {
+                "text": "Ask if they need regular volunteers",
+                "outcomes": {
+                    "job_prospects": 5,
+                    "housing_prospects": 5,
+                    "mental": 5,
+                    "message": "The garden coordinator seems impressed by your initiative and mentions they could use regular help. This could develop into something more stable."
+                }
+            },
+            {
+                "text": "Just observe and move on",
+                "outcomes": {
+                    "message": "You watch the activity for a while but decide not to get involved today."
+                }
+            }
+        ],
+        "requirements": {
+            "time_period": ["morning", "afternoon"],
+            "weather": ["clear", "cloudy"]
+        },
+        "type": "opportunity"
+    },
+    "lost_tourist": {
+        "id": "lost_tourist",
+        "title": "Lost Tourist",
+        "description": "A tourist is looking confused at a map and clearly lost.",
+        "choices": [
+            {
+                "text": "Offer directions and assistance",
+                "outcomes": {
+                    "mental": 10,
+                    "money": 5,
+                    "message": "You help them find their way to a popular attraction. They're grateful and offer you a small amount of money."
+                }
+            },
+            {
+                "text": "Offer to show them the way personally",
+                "outcomes": {
+                    "energy": -10,
+                    "money": 10,
+                    "mental": 15,
+                    "message": "You walk with them to their destination, providing local insights along the way. They appreciate your kindness and give you a generous tip."
+                },
+                "requirements": {
+                    "skills": {"navigation": 2}
+                }
+            },
+            {
+                "text": "Ignore them, it's not your problem",
+                "outcomes": {
+                    "message": "You keep to yourself and continue on your way."
+                }
+            }
+        ],
+        "requirements": {
+            "location_type": ["low_danger"]
+        },
+        "type": "encounter"
+    },
+    "life_turning_point": {
+        "id": "life_turning_point",
+        "title": "A Second Chance",
+        "description": "While at the community center, you discover a skills training program that could change everything. The coordinator seems genuinely interested in helping you.",
+        "choices": [
+            {
+                "text": "Commit to the program despite the challenges",
+                "outcomes": {
+                    "job_prospects": 20,
+                    "mental": 15,
+                    "energy": -10,
+                    "story_flags": ["training_program_started"],
+                    "message": "You sign up for the program. It will be tough, but this could be your path forward.",
+                    "long_term_effects": {
+                        "unlock_events": ["program_progress", "mentor_meeting"],
+                        "modify_reputation": {"services": 2}
+                    }
+                }
+            },
+            {
+                "text": "Take the information but delay deciding",
+                "outcomes": {
+                    "mental": -5,
+                    "job_prospects": 5,
+                    "story_flags": ["opportunity_missed"],
+                    "message": "You hold onto the brochure, but the weight of commitment feels too heavy right now.",
+                    "long_term_effects": {
+                        "unlock_events": ["regret_reflection", "second_opportunity"]
+                    }
+                }
+            }
+        ],
+        "requirements": {
+            "mental": {"min": 40},
+            "days_survived": {"min": 7}
+        },
+        "type": "life_event"
+    },
+    "job_interview": {
+        "id": "job_interview",
+        "title": "Job Interview",
+        "description": "A local store is hiring. They've agreed to interview you despite your situation.",
+        "choices": [
+            {
+                "text": "Dress your best and be honest about your situation",
+                "outcomes": {
+                    "job_prospects": 15,
+                    "mental": 5,
+                    "message": "The manager appreciates your honesty and says they'll consider you for a position."
+                }
+            },
+            {
+                "text": "Make up a story about your background",
+                "outcomes": {
+                    "job_prospects": 20,
+                    "mental": -5,
+                    "message": "They seem to believe your story, but keeping up the lie might be stressful."
+                }
+            }
+        ],
+        "type": "life_event",
+        "chain_events": {
+            "honest": "job_offer_honest",
+            "story": "job_offer_lie"
+        }
+    },
+    
+    "job_offer_honest": {
+        "id": "job_offer_honest",
+        "title": "Job Offer",
+        "description": "The store manager calls. They were impressed by your honesty and want to offer you a part-time position stocking shelves.",
+        "choices": [
+            {
+                "text": "Accept the job gratefully",
+                "outcomes": {
+                    "job_prospects": 30,
+                    "money": 15,
+                    "mental": 20,
+                    "story_flags": ["employed_part_time"],
+                    "message": "You've got a job! It's only part-time, but it's a stable income and a huge step forward."
+                }
+            },
+            {
+                "text": "Ask if full-time is possible",
+                "outcomes": {
+                    "job_prospects": 15,
+                    "mental": 5,
+                    "message": "They can only offer part-time for now, but will keep you in mind if a full-time position opens up."
+                }
+            }
+        ],
+        "type": "chain",
+        "chain_events": {
+            "accept": "first_day_work"
+        }
+    },
+    
+    "job_offer_lie": {
+        "id": "job_offer_lie",
+        "title": "Reference Check",
+        "description": "The store manager calls to say they're checking your references, but they're having trouble verifying some of your background information.",
+        "choices": [
+            {
+                "text": "Come clean and explain your situation",
+                "outcomes": {
+                    "job_prospects": 5,
+                    "mental": -5,
+                    "message": "The manager appreciates you coming clean but says they need reliable employees. They'll keep your application on file."
+                }
+            },
+            {
+                "text": "Make up more elaborate excuses",
+                "outcomes": {
+                    "job_prospects": -10,
+                    "mental": -15,
+                    "message": "Your story falls apart under scrutiny. The manager says they can't hire someone they don't trust."
+                }
+            }
+        ],
+        "type": "chain"
+    },
+    
+    "first_day_work": {
+        "id": "first_day_work",
+        "title": "First Day on the Job",
+        "description": "It's your first day working at the store. You're nervous but excited for this opportunity.",
+        "choices": [
+            {
+                "text": "Work extra hard to make a good impression",
+                "outcomes": {
+                    "energy": -25,
+                    "money": 30,
+                    "job_prospects": 10,
+                    "message": "You put in 110% effort. Your supervisor notices and is impressed by your work ethic."
+                }
+            },
+            {
+                "text": "Take it easy and pace yourself",
+                "outcomes": {
+                    "energy": -10,
+                    "money": 25,
+                    "message": "You complete your assigned tasks adequately without overexerting yourself."
+                }
+            }
+        ],
+        "type": "chain"
+    },
+    "health_choice": {
+        "id": "health_choice",
+        "title": "Health Decision",
+        "description": "You're not feeling well. The clinic has a long wait but is free. The pharmacy has medicine but costs money.",
+        "choices": [
+            {
+                "text": "Wait at the clinic",
+                "outcomes": {
+                    "health": 20,
+                    "energy": -15,
+                    "message": "After hours of waiting, you receive proper treatment."
+                }
+            },
+            {
+                "text": "Buy medicine ($10)",
+                "outcomes": {
+                    "health": 15,
+                    "money": -10,
+                    "message": "The medicine helps but was expensive."
+                },
+                "requirements": {
+                    "player_stats": {"money": {"min": 10}}
+                }
+            }
+        ],
+        "type": "life_event"
+    },
+    
+    "id_quest_start": {
+        "id": "id_quest_start",
+        "title": "Lost Identification",
+        "description": "You realize you need ID to access many services and opportunities, but your identification was lost during your eviction.",
+        "choices": [
+            {
+                "text": "Try to remember where you last saw your ID",
+                "outcomes": {
+                    "mental": -5,
+                    "energy": -5,
+                    "story_flags": ["id_quest_started"],
+                    "message": "You rack your brain but can't recall exactly what happened to your documents during the confusion of eviction."
+                }
+            },
+            {
+                "text": "Ask at the social services office about replacing ID",
+                "outcomes": {
+                    "energy": -10,
+                    "story_flags": ["id_quest_started", "service_info_received"],
+                    "message": "You learn that replacing ID is possible but requires other forms of identification you don't currently have."
+                }
+            }
+        ],
+        "type": "quest",
+        "chain_events": {
+            "ask": "id_quest_services",
+            "try": "id_quest_memory"
+        }
+    },
+    
+    "id_quest_services": {
+        "id": "id_quest_services",
+        "title": "ID Replacement Process",
+        "description": "The social worker explains the complex process for replacing your identification without having other forms of ID.",
+        "choices": [
+            {
+                "text": "Work with the social worker on the application",
+                "outcomes": {
+                    "energy": -15,
+                    "story_flags": ["id_application_started"],
+                    "message": "The social worker helps you fill out forms and explains that you'll need to get affidavits from people who can verify your identity."
+                }
+            },
+            {
+                "text": "It seems too complicated right now",
+                "outcomes": {
+                    "mental": -10,
+                    "message": "The process feels overwhelming. You'll need to come back when you have more resources and energy."
+                }
+            }
+        ],
+        "type": "chain",
+        "chain_events": {
+            "work": "id_quest_affidavits"
+        }
+    },
+    
+    "id_quest_memory": {
+        "id": "id_quest_memory",
+        "title": "Memory Breakthrough",
+        "description": "Suddenly you remember - your former landlord might have kept your belongings, including the box with your documents.",
+        "choices": [
+            {
+                "text": "Try to contact your former landlord",
+                "outcomes": {
+                    "energy": -10,
+                    "story_flags": ["landlord_contacted"],
+                    "message": "You manage to leave a message with the landlord's office. Now you have to wait and see if they respond."
+                }
+            },
+            {
+                "text": "Look for another solution",
+                "outcomes": {
+                    "message": "You decide it's better not to rely on someone who evicted you. You'll need to find another way."
+                }
+            }
+        ],
+        "type": "chain",
+        "chain_events": {
+            "contact": "id_quest_landlord_response"
+        }
+    },
+    
+    "id_quest_landlord_response": {
+        "id": "id_quest_landlord_response",
+        "title": "Landlord's Call",
+        "description": "Your former landlord calls back. They do have a box of your belongings in storage, including what might be your ID documents.",
+        "choices": [
+            {
+                "text": "Arrange to pick up your belongings",
+                "outcomes": {
+                    "energy": -20,
+                    "mental": 15,
+                    "story_flags": ["id_retrieved"],
+                    "message": "You make the trek across town and recover your documents! Having your ID will make many things easier."
+                }
+            },
+            {
+                "text": "Ask if they can mail the documents",
+                "outcomes": {
+                    "money": -5,
+                    "message": "They agree to mail just the documents if you pay for postage. You'll need to wait a few days."
+                },
+                "requirements": {
+                    "player_stats": {"money": {"min": 5}}
+                }
+            }
+        ],
+        "type": "chain"
+    },
+    
+    "id_quest_affidavits": {
+        "id": "id_quest_affidavits",
+        "title": "Finding Witnesses",
+        "description": "You need to find people who can verify your identity to complete the ID application process.",
+        "choices": [
+            {
+                "text": "Try to contact old coworkers",
+                "outcomes": {
+                    "energy": -15,
+                    "mental": -5,
+                    "story_flags": ["coworker_contacted"],
+                    "message": "After several attempts, you manage to reach a former supervisor who agrees to sign an affidavit."
+                }
+            },
+            {
+                "text": "Ask outreach workers who know you",
+                "outcomes": {
+                    "energy": -10,
+                    "story_flags": ["outreach_help_received"],
+                    "message": "The shelter staff who have been working with you agree to provide the necessary documentation."
+                }
+            }
+        ],
+        "type": "chain",
+        "chain_events": {
+            "contact": "id_quest_completion",
+            "ask": "id_quest_completion"
+        }
+    },
+    
+    "id_quest_completion": {
+        "id": "id_quest_completion",
+        "title": "ID Application Submitted",
+        "description": "With all the necessary documentation gathered, you submit your application for replacement identification.",
+        "choices": [
+            {
+                "text": "Pay the expedited processing fee ($25)",
+                "outcomes": {
+                    "money": -25,
+                    "story_flags": ["id_expedited"],
+                    "message": "You pay extra to speed up the process. Your new ID should be ready within a week."
+                },
+                "requirements": {
+                    "player_stats": {"money": {"min": 25}}
+                }
+            },
+            {
+                "text": "Wait for standard processing",
+                "outcomes": {
+                    "story_flags": ["id_processing"],
+                    "message": "You opt for the free standard processing. It will take 3-4 weeks, but you've managed the hardest part of the process."
+                }
+            }
+        ],
+        "type": "chain"
+    },
+    "byward_market_events": {
+        "busker_territory": {
+            "id": "busker_territory",
+            "title": "Busker Territory Dispute",
+            "description": "A street performer confronts you about occupying their usual spot.",
+            "choices": [
+                {
+                    "text": "Apologize and move",
+                    "outcomes": {
+                        "energy": -5,
+                        "mental": -3,
+                        "message": "You find another spot, though less ideal."
+                    }
+                },
+                {
+                    "text": "Offer to collaborate",
+                    "outcomes": {
+                        "money": 8,
+                        "mental": 10,
+                        "skills": {"social": 1},
+                        "message": "Your suggestion leads to an impromptu dual performance."
+                    },
+                    "requirements": {
+                        "skills": {"social": 2}
+                    }
+                }
+            ],
+            "type": "territory"
+        },
+        "bakery_opportunity": {
+            "id": "bakery_opportunity",
+            "title": "Bakery Closing Time",
+            "description": "A bakery employee is about to dispose of the day's unsold goods.",
+            "choices": [
+                {
+                    "text": "Ask politely for leftovers",
+                    "outcomes": {
+                        "hunger": -20,
+                        "mental": 5,
+                        "inventory": {"Food": 2},
+                        "message": "They kindly give you some pastries."
+                    }
+                },
+                {
+                    "text": "Wait for disposal and salvage",
+                    "outcomes": {
+                        "hunger": -15,
+                        "hygiene": -5,
+                        "inventory": {"Food": 3},
+                        "message": "You retrieve more food but it's less dignified."
+                    }
+                }
+            ],
+            "type": "food"
+        }
+    },
+    "lowertown_events": {
+        "shelter_politics": {
+            "id": "shelter_politics",
+            "title": "Shelter Power Dynamic",
+            "description": "You notice a group of regulars controlling access to the best sleeping spots.",
+            "choices": [
+                {
+                    "text": "Confront the group",
+                    "outcomes": {
+                        "mental": -10,
+                        "energy": -10,
+                        "reputation": {"shelters": 3},
+                        "message": "Standing up to them earns respect but creates tension."
+                    }
+                },
+                {                    "text": "Build alliances quietly",
+                    "outcomes": {
+                        "mental": 5,
+                        "reputation": {"shelters": 2},
+                        "skills": {"social": 1},
+                        "message": "You gradually gain support from others in similar situations."
+                    }
+                }
+            ],
+            "type": "shelter"
+        }
+    },
+    "vanier_events": {
+        "community_fridge": {
+            "id": "community_fridge",
+            "title": "Hidden Community Fridge",
+            "description": "You discover a community fridge tucked behind a local church.",
+            "choices": [
+                {
+                    "text": "Take what you need",
+                    "outcomes": {
+                        "hunger": -25,
+                        "inventory": {"Food": 1},
+                        "message": "You find some fresh food and take a reasonable amount."
+                    }
+                },
+                {
+                    "text": "Contribute and organize",
+                    "outcomes": {
+                        "mental": 15,
+                        "reputation": {"community": 2},
+                        "message": "Helping organize the fridge earns goodwill from volunteers."
+                    },
+                    "requirements": {
+                        "inventory": {"Food": 1}
+                    }
+                }
+            ],
+            "type": "resource"
+        }
+    },
+    "centretown_events": {
+        "apartment_opportunity": {
+            "id": "apartment_opportunity",
+            "title": "Apartment Building Access",
+            "description": "A resident holds the door open, giving temporary access to the building's facilities.",
+            "choices": [
+                {
+                    "text": "Use the laundry room",
+                    "outcomes": {
+                        "hygiene": 30,
+                        "energy": -10,
+                        "money": -2,
+                        "message": "You manage to wash your clothes, significantly improving your hygiene."
+                    },
+                    "requirements": {
+                        "money": {"min": 2}
+                    }
+                },
+                {
+                    "text": "Find a warm spot to rest",
+                    "outcomes": {
+                        "energy": 15,
+                        "warmth": 20,
+                        "message": "You find a quiet corner in the stairwell for a brief rest."
+                    }
+                }
+            ],
+            "type": "opportunity"
+        }
+    },
+    "hintonburg_events": {
+        "art_space_connection": {
+            "id": "art_space_connection",
+            "title": "Art Space Discovery",
+            "description": "An art gallery is hosting a free community event with food and warmth.",
+            "choices": [
+                {
+                    "text": "Participate in art activity",
+                    "outcomes": {
+                        "mental": 15,
+                        "hunger": -10,
+                        "skills": {"creativity": 1},
+                        "message": "Creating art proves therapeutic and engaging."
+                    }
+                },
+                {
+                    "text": "Help clean up after",
+                    "outcomes": {
+                        "hunger": -20,
+                        "mental": 10,
+                        "reputation": {"community": 2},
+                        "inventory": {"Food": 1},
+                        "message": "Staff appreciate the help and share leftover refreshments."
+                    }
+                }
+            ],
+            "type": "opportunity"
+        }
+    },
+    "glebe_events": {
+        "stadium_event": {
+            "id": "stadium_event",
+            "title": "Stadium Event Opportunity",
+            "description": "A major event at TD Place is ending, creating opportunities for bottle collection.",
+            "choices": [
+                {
+                    "text": "Collect bottles systematically",
+                    "outcomes": {
+                        "money": 15,
+                        "energy": -20,
+                        "message": "Your organized approach yields good results."
+                    }
+                },
+                {
+                    "text": "Check food vendors for leftovers",
+                    "outcomes": {
+                        "hunger": -30,
+                        "energy": -10,
+                        "inventory": {"Food": 1},
+                        "message": "You find substantial leftover food being discarded."
+                    }
+                }
+            ],
+            "type": "resource"
+        }
+    },
+    "seasonal_events": {
+        "winter_crisis": {
+            "id": "winter_crisis",
+            "title": "Winter Storm Crisis",
+            "description": "A severe snowstorm has hit the city, making survival critically important.",
+            "choices": [
+                {
+                    "text": "Seek emergency shelter",
+                    "outcomes": {
+                        "health": 10,
+                        "energy": -15,
+                        "warmth": 30,
+                        "message": "You make it to an emergency warming center."
+                    }
+                },
+                {
+                    "text": "Use winter survival skills",
+                    "outcomes": {
+                        "health": -5,
+                        "energy": -20,
+                        "skills": {"survival": 2},
+                        "message": "You manage to create a sheltered space from the storm."
+                    },
+                    "requirements": {
+                        "inventory": {"Warm Clothes": 1}
+                    }
+                }
+            ],
+            "requirements": {
+                "weather": ["snow", "storm"]
+            },
+            "type": "weather"
+        }
+    }
+}

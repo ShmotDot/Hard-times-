@@ -1,0 +1,420 @@
+[
+  {
+    "id": "food_sandwich",
+    "name": "Sandwich",
+    "description": "A basic sandwich with some nutritional value.",
+    "category": "food",
+    "weight": 0.2,
+    "value": 3.50,
+    "perishable": true,
+    "expiry_time": 24,
+    "effects": [
+      {
+        "stat": "hunger",
+        "value": 20
+      },
+      {
+        "stat": "energy",
+        "value": 5
+      }
+    ],
+    "tags": ["meal"]
+  },
+  {
+    "id": "tool_water_collector",
+    "name": "Water Collector",
+    "description": "A simple device for collecting rainwater. Can produce clean water.",
+    "category": "tool",
+    "weight": 0.8,
+    "value": 15.00,
+    "durability": 40,
+    "max_durability": 40,
+    "quality": "common",
+    "tags": ["water", "survival"]
+  },
+  {
+    "id": "clothing_makeshift_blanket",
+    "name": "Makeshift Blanket",
+    "description": "A crude but effective blanket made from newspaper and cloth.",
+    "category": "clothing",
+    "weight": 0.5,
+    "value": 8.00,
+    "durability": 30,
+    "max_durability": 30,
+    "quality": "poor",
+    "effects": [
+      {
+        "stat": "temperature",
+        "value": 8,
+        "duration": 4
+      }
+    ],
+    "tags": ["warm", "crafted"]
+  },
+  {
+    "id": "shelter_insulated_sleeping_area",
+    "name": "Insulated Sleeping Area",
+    "description": "A sleeping area insulated with newspaper and cloth for better warmth.",
+    "category": "shelter",
+    "weight": 2.0,
+    "value": 25.00,
+    "durability": 40,
+    "max_durability": 40,
+    "quality": "common",
+    "effects": [
+      {
+        "stat": "rest_quality",
+        "value": 30
+      },
+      {
+        "stat": "temperature",
+        "value": 15,
+        "duration": 8
+      }
+    ],
+    "tags": ["sleep", "warm", "crafted"]
+  },
+  {
+    "id": "tool_can_stove",
+    "name": "Can Stove",
+    "description": "A simple cooking stove made from cans. Allows cooking of certain foods.",
+    "category": "tool",
+    "weight": 0.5,
+    "value": 10.00,
+    "durability": 20,
+    "max_durability": 20,
+    "quality": "poor",
+    "tags": ["cooking", "crafted", "fire"]
+  },
+  {
+    "id": "food_apple",
+    "name": "Apple",
+    "description": "A fresh apple. Good source of nutrients.",
+    "category": "food",
+    "weight": 0.1,
+    "value": 1.00,
+    "perishable": true,
+    "expiry_time": 72,
+    "effects": [
+      {
+        "stat": "hunger",
+        "value": 10
+      },
+      {
+        "stat": "thirst",
+        "value": 5
+      }
+    ],
+    "tags": ["fruit", "healthy"]
+  },
+  {
+    "id": "food_canned_beans",
+    "name": "Canned Beans",
+    "description": "Preserved beans in a can. Long shelf life.",
+    "category": "food",
+    "weight": 0.4,
+    "value": 2.50,
+    "perishable": false,
+    "effects": [
+      {
+        "stat": "hunger",
+        "value": 30
+      }
+    ],
+    "tags": ["preserved", "protein"]
+  },
+  {
+    "id": "drink_water_bottle",
+    "name": "Water Bottle",
+    "description": "A bottle of clean drinking water.",
+    "category": "drink",
+    "weight": 0.5,
+    "value": 1.50,
+    "perishable": false,
+    "effects": [
+      {
+        "stat": "thirst",
+        "value": 40
+      }
+    ],
+    "tags": ["essential"]
+  },
+  {
+    "id": "clothing_jacket",
+    "name": "Winter Jacket",
+    "description": "A thick jacket that provides warmth in cold weather.",
+    "category": "clothing",
+    "weight": 2.0,
+    "value": 40.00,
+    "durability": 100,
+    "max_durability": 100,
+    "quality": "good",
+    "effects": [
+      {
+        "stat": "temperature",
+        "value": 20,
+        "duration": 4
+      }
+    ],
+    "tags": ["winter", "warm"]
+  },
+  {
+    "id": "clothing_socks",
+    "name": "Wool Socks",
+    "description": "Thick wool socks to keep your feet warm and dry.",
+    "category": "clothing",
+    "weight": 0.1,
+    "value": 5.00,
+    "durability": 50,
+    "max_durability": 50,
+    "quality": "common",
+    "effects": [
+      {
+        "stat": "temperature",
+        "value": 5,
+        "duration": 4
+      }
+    ],
+    "tags": ["winter", "warm"]
+  },
+  {
+    "id": "medicine_painkillers",
+    "name": "Painkillers",
+    "description": "Generic over-the-counter painkillers.",
+    "category": "medicine",
+    "weight": 0.1,
+    "value": 8.00,
+    "perishable": true,
+    "expiry_time": 2160,
+    "effects": [
+      {
+        "stat": "pain",
+        "value": -30,
+        "duration": 4
+      }
+    ],
+    "tags": ["medical"]
+  },
+  {
+    "id": "medicine_bandage",
+    "name": "Bandage",
+    "description": "Clean bandage for treating wounds.",
+    "category": "medicine",
+    "weight": 0.1,
+    "value": 3.00,
+    "effects": [
+      {
+        "stat": "health",
+        "value": 5
+      }
+    ],
+    "tags": ["medical", "first_aid"]
+  },
+  {
+    "id": "medicine_antibiotics",
+    "name": "Antibiotics",
+    "description": "Medication to treat bacterial infections.",
+    "category": "medicine",
+    "weight": 0.1,
+    "value": 25.00,
+    "perishable": true,
+    "expiry_time": 4320,
+    "effects": [
+      {
+        "stat": "infection",
+        "value": -40,
+        "duration": 24
+      }
+    ],
+    "tags": ["medical", "prescription"]
+  },
+  {
+    "id": "tool_can_opener",
+    "name": "Can Opener",
+    "description": "A basic tool for opening canned food.",
+    "category": "tool",
+    "weight": 0.2,
+    "value": 5.00,
+    "durability": 50,
+    "max_durability": 50,
+    "quality": "common",
+    "tags": ["essential"]
+  },
+  {
+    "id": "tool_lighter",
+    "name": "Lighter",
+    "description": "A simple lighter for starting fires.",
+    "category": "tool",
+    "weight": 0.1,
+    "value": 3.00,
+    "durability": 30,
+    "max_durability": 30,
+    "quality": "common",
+    "tags": ["fire", "essential"]
+  },
+  {
+    "id": "tool_backpack",
+    "name": "Backpack",
+    "description": "A sturdy backpack that increases your inventory capacity.",
+    "category": "tool",
+    "weight": 1.0,
+    "value": 30.00,
+    "durability": 80,
+    "max_durability": 80,
+    "quality": "good",
+    "tags": ["storage", "essential"]
+  },
+  {
+    "id": "tool_sleeping_bag",
+    "name": "Sleeping Bag",
+    "description": "A basic sleeping bag for outdoor rest.",
+    "category": "shelter",
+    "weight": 1.5,
+    "value": 35.00,
+    "durability": 60,
+    "max_durability": 60,
+    "quality": "common",
+    "effects": [
+      {
+        "stat": "rest_quality",
+        "value": 20
+      },
+      {
+        "stat": "temperature",
+        "value": 10,
+        "duration": 8
+      }
+    ],
+    "tags": ["sleep", "essential"]
+  },
+  {
+    "id": "valuable_phone",
+    "name": "Smartphone",
+    "description": "A second-hand smartphone. Useful for communication and access to services.",
+    "category": "valuable",
+    "weight": 0.2,
+    "value": 150.00,
+    "durability": 100,
+    "max_durability": 100,
+    "quality": "good",
+    "tags": ["tech", "communication"]
+  },
+  {
+    "id": "valuable_watch",
+    "name": "Wristwatch",
+    "description": "A basic wristwatch. Helps you keep track of time.",
+    "category": "valuable",
+    "weight": 0.1,
+    "value": 25.00,
+    "durability": 90,
+    "max_durability": 90,
+    "quality": "common",
+    "tags": ["timekeeping"]
+  },
+  {
+    "id": "document_id_card",
+    "name": "ID Card",
+    "description": "Your personal identification card. Essential for accessing many services.",
+    "category": "document",
+    "weight": 0.01,
+    "value": 0.00,
+    "tags": ["identification", "essential"]
+  },
+  {
+    "id": "document_health_card",
+    "name": "Health Card",
+    "description": "Your health insurance card. Required for medical services.",
+    "category": "document",
+    "weight": 0.01,
+    "value": 0.00,
+    "tags": ["identification", "medical"]
+  },
+  {
+    "id": "crafting_cloth",
+    "name": "Cloth Scraps",
+    "description": "Scraps of fabric useful for crafting and repairs.",
+    "category": "crafting",
+    "weight": 0.1,
+    "value": 1.00,
+    "tags": ["crafting", "material"]
+  },
+  {
+    "id": "crafting_duct_tape",
+    "name": "Duct Tape",
+    "description": "A roll of sticky tape useful for repairs and crafting.",
+    "category": "crafting",
+    "weight": 0.2,
+    "value": 4.00,
+    "durability": 20,
+    "max_durability": 20,
+    "tags": ["crafting", "repair"]
+  },
+  {
+    "id": "crafting_string",
+    "name": "String",
+    "description": "A length of strong string useful for crafting.",
+    "category": "crafting",
+    "weight": 0.05,
+    "value": 2.00,
+    "tags": ["crafting", "material"]
+  },
+  {
+    "id": "misc_newspaper",
+    "name": "Newspaper",
+    "description": "Yesterday's newspaper. Could be used for insulation or starting fires.",
+    "category": "misc",
+    "weight": 0.2,
+    "value": 0.50,
+    "tags": ["insulation", "fire"]
+  },
+  {
+    "id": "misc_empty_bottle",
+    "name": "Empty Bottle",
+    "description": "An empty plastic bottle. Could be refilled with water.",
+    "category": "misc",
+    "weight": 0.1,
+    "value": 0.25,
+    "tags": ["container"]
+  },
+  {
+    "id": "medication_antidepressant",
+    "name": "Antidepressant",
+    "description": "Medication to help stabilize mental health.",
+    "category": "medicine",
+    "weight": 0.05,
+    "value": 20.00,
+    "perishable": true,
+    "expiry_time": 4320,
+    "effects": [
+      {
+        "stat": "mental_health",
+        "value": 15,
+        "duration": 24
+      }
+    ],
+    "tags": ["medical", "prescription", "mental_health"]
+  },
+  {
+    "id": "medication_antipsychotic",
+    "name": "Antipsychotic",
+    "description": "Medication to control symptoms of severe mental illness.",
+    "category": "medicine",
+    "weight": 0.05,
+    "value": 30.00,
+    "perishable": true,
+    "expiry_time": 4320,
+    "effects": [
+      {
+        "stat": "mental_stability",
+        "value": 25,
+        "duration": 24
+      },
+      {
+        "stat": "energy",
+        "value": -10,
+        "duration": 12
+      }
+    ],
+    "tags": ["medical", "prescription", "mental_health"]
+  }
+]

@@ -1,0 +1,397 @@
+{
+    "survival_basics": {
+        "quest_id": "survival_basics",
+        "title": "Street Survival 101",
+        "description": "Learn the basics of surviving on the streets from an experienced homeless person.",
+        "steps": [
+            {
+                "step_id": "meeting_mentor",
+                "title": "Finding a Mentor",
+                "description": "You need to learn how to survive on the streets. An experienced homeless person might be willing to help.",
+                "choices": [
+                    {
+                        "text": "Approach someone who looks experienced",
+                        "outcomes": {
+                            "mental": 5,
+                            "energy": -10,
+                            "story_flags": ["found_mentor"],
+                            "quest_progress": 1
+                        }
+                    }
+                ]
+            }
+        ]
+    },
+    "path_to_identity": {
+        "quest_id": "path_to_identity",
+        "title": "The Path to Identity",
+        "description": "Without proper identification, you're unable to access many essential services. This quest involves the bureaucratic process of replacing your lost ID.",
+        "steps": [
+            {
+                "step_id": "identity_realization",
+                "title": "Lost Identity",
+                "description": "While trying to register at a service center, you realize your ID is missing. You must have lost it during your eviction, and now you're unable to access essential services without it.",
+                "choices": [
+                    {
+                        "text": "Ask the clerk for help",
+                        "outcomes": {
+                            "mental": -5,
+                            "energy": -10,
+                            "message": "The clerk looks frustrated but reluctantly provides you with information on how to replace your ID.",
+                            "story_flags": ["id_quest_started", "clerk_assistance"],
+                            "quest_progress": 1
+                        }
+                    },
+                    {
+                        "text": "Look for a social worker instead",
+                        "outcomes": {
+                            "mental": 5,
+                            "energy": -15,
+                            "message": "You find a social worker who empathetically explains the process of replacing your ID and offers to help navigate the system.",
+                            "story_flags": ["id_quest_started", "social_worker_assistance"],
+                            "quest_progress": 1,
+                            "reputation": {"social_services": 5}
+                        }
+                    }
+                ],
+                "requirements": {},
+                "type": "quest",
+                "location_types": ["service_center", "community_center"]
+            },
+            {
+                "step_id": "form_gathering",
+                "title": "Bureaucratic Beginnings",
+                "description": "You've been told you need to fill out several forms and gather documentation to prove your identity. This will require visits to multiple offices and possibly some fee payments.",
+                "choices": [
+                    {
+                        "text": "Fill out forms yourself",
+                        "outcomes": {
+                            "mental": -15,
+                            "energy": -25,
+                            "message": "The forms are confusing and overwhelming. You do your best but worry about mistakes.",
+                            "story_flags": ["forms_attempted"],
+                            "quest_progress": 2
+                        }
+                    },
+                    {
+                        "text": "Ask for assistance with the paperwork",
+                        "outcomes": {
+                            "mental": 5,
+                            "energy": -15,
+                            "money": -5,
+                            "message": "A volunteer helps you complete the forms correctly, explaining each section. They charge a small fee for their time.",
+                            "story_flags": ["forms_completed_correctly"],
+                            "quest_progress": 3
+                        },
+                        "requirements": {
+                            "money": 5
+                        }
+                    },
+                    {
+                        "text": "Try to find free help services",
+                        "outcomes": {
+                            "mental": 0,
+                            "energy": -30,
+                            "message": "After a lot of searching, you find a non-profit organization that offers free assistance with government paperwork.",
+                            "story_flags": ["forms_completed_correctly", "nonprofit_connection"],
+                            "quest_progress": 3,
+                            "reputation": {"community": 5}
+                        }
+                    }
+                ],
+                "requirements": {
+                    "story_flags": ["id_quest_started"]
+                },
+                "type": "quest",
+                "location_types": ["service_center", "community_center", "library"]
+            },
+            {
+                "step_id": "documentation_proof",
+                "title": "Proving Existence",
+                "description": "To replace your ID, you need to prove who you are. This paradox is frustrating - you need some form of documentation to get your main identification back.",
+                "choices": [
+                    {
+                        "text": "Check with previous employers",
+                        "outcomes": {
+                            "mental": -10,
+                            "energy": -20,
+                            "message": "Your former workplace provides employment records, which can serve as partial proof of identity.",
+                            "story_flags": ["employer_records_obtained"],
+                            "inventory": {"Employment Records": 1},
+                            "quest_progress": 4
+                        }
+                    },
+                    {
+                        "text": "Contact family members for birth certificate",
+                        "outcomes": {
+                            "mental": -15,
+                            "energy": -10,
+                            "message": "You reluctantly reach out to estranged family members who agree to mail your birth certificate.",
+                            "story_flags": ["birth_certificate_incoming"],
+                            "quest_progress": 4
+                        }
+                    },
+                    {
+                        "text": "Get documentation from a shelter",
+                        "outcomes": {
+                            "mental": 0,
+                            "energy": -15,
+                            "message": "The shelter provides a letter confirming your stays, which serves as a form of address verification.",
+                            "story_flags": ["shelter_letter_obtained"],
+                            "inventory": {"Shelter Letter": 1},
+                            "quest_progress": 4,
+                            "reputation": {"shelters": 5}
+                        },
+                        "requirements": {
+                            "reputation": {"shelters": 1}
+                        }
+                    }
+                ],
+                "requirements": {
+                    "story_flags": ["forms_completed_correctly"]
+                },
+                "type": "quest",
+                "location_types": ["service_center", "shelter"]
+            },
+            {
+                "step_id": "fee_waiver",
+                "title": "Financial Obstacles",
+                "description": "You discover there's a $35 fee to replace your ID. This amount is substantial given your current situation.",
+                "choices": [
+                    {
+                        "text": "Try to save up the money",
+                        "outcomes": {
+                            "mental": -5,
+                            "energy": -10,
+                            "message": "You resolve to save enough money for the fee, delaying the process but maintaining independence.",
+                            "story_flags": ["saving_for_id_fee"],
+                            "quest_progress": 5
+                        }
+                    },
+                    {
+                        "text": "Apply for a fee waiver",
+                        "outcomes": {
+                            "mental": -15,
+                            "energy": -25,
+                            "message": "You navigate the additional paperwork to apply for a fee waiver based on financial hardship.",
+                            "story_flags": ["fee_waiver_applied"],
+                            "quest_progress": 6
+                        }
+                    },
+                    {
+                        "text": "Ask a social service agency for help",
+                        "outcomes": {
+                            "mental": 10,
+                            "energy": -15,
+                            "message": "A local non-profit agrees to cover the fee as part of their emergency assistance program.",
+                            "story_flags": ["fee_covered_by_nonprofit"],
+                            "quest_progress": 7,
+                            "reputation": {"social_services": 10}
+                        },
+                        "requirements": {
+                            "reputation": {"social_services": 5}
+                        }
+                    }
+                ],
+                "requirements": {
+                    "quest_progress": 4
+                },
+                "type": "quest",
+                "location_types": ["service_center", "community_center"]
+            },
+            {
+                "step_id": "waiting_period",
+                "title": "The Waiting Game",
+                "description": "After submitting all required documentation and addressing the fee, you're told there will be a processing period before you receive your new ID.",
+                "choices": [
+                    {
+                        "text": "Wait patiently",
+                        "outcomes": {
+                            "mental": -10,
+                            "energy": -5,
+                            "message": "You decide to focus on other aspects of survival while waiting for the ID process to complete.",
+                            "story_flags": ["waiting_for_id"],
+                            "quest_progress": 8
+                        }
+                    },
+                    {
+                        "text": "Check status regularly",
+                        "outcomes": {
+                            "mental": -15,
+                            "energy": -20,
+                            "message": "You visit the office frequently to check on your application, which is tiring but ensures it doesn't get lost in the system.",
+                            "story_flags": ["monitoring_id_application"],
+                            "quest_progress": 8
+                        }
+                    },
+                    {
+                        "text": "Ask a social worker to follow up",
+                        "outcomes": {
+                            "mental": 5,
+                            "energy": -5,
+                            "message": "The social worker agrees to follow up on your behalf, using their knowledge of the system to ensure things move smoothly.",
+                            "story_flags": ["social_worker_assistance_advanced"],
+                            "quest_progress": 9,
+                            "reputation": {"social_services": 5}
+                        },
+                        "requirements": {
+                            "story_flags": ["social_worker_assistance"]
+                        }
+                    }
+                ],
+                "requirements": {
+                    "or": [
+                        {"story_flags": ["fee_waiver_applied"]},
+                        {"story_flags": ["fee_covered_by_nonprofit"]},
+                        {"and": [
+                            {"story_flags": ["saving_for_id_fee"]},
+                            {"money": 35}
+                        ]}
+                    ]
+                },
+                "type": "quest",
+                "location_types": ["service_center"]
+            },
+            {
+                "step_id": "id_acquisition",
+                "title": "Reclaiming Identity",
+                "description": "The day has finally arrived - your ID is ready for pickup. This marks a significant milestone in regaining stability.",
+                "choices": [
+                    {
+                        "text": "Collect your ID and reflect on the journey",
+                        "outcomes": {
+                            "mental": 30,
+                            "energy": -10,
+                            "message": "You finally hold your new ID in your hands. The bureaucratic process was challenging, but you now have access to more services and opportunities.",
+                            "story_flags": ["id_obtained", "path_to_identity_completed"],
+                            "inventory": {"Government ID": 1},
+                            "quest_progress": 10,
+                            "unlock_features": ["work", "housing_applications"]
+                        }
+                    }
+                ],
+                "requirements": {
+                    "or": [
+                        {"quest_progress": 9},
+                        {"and": [
+                            {"quest_progress": 8},
+                            {"days_since_flag": ["waiting_for_id", 7]}
+                        ]}
+                    ]
+                },
+                "type": "quest",
+                "location_types": ["service_center"],
+                "completion_effects": {
+                    "reputation": {"services": 15, "community": 10},
+                    "unlock_features": ["housing_applications", "benefits_applications"],
+                    "dignity": 20,
+                    "follow_up_quests": ["employment_search", "housing_stability"]
+                }
+            }
+        ]
+    },
+    "employment_search": {
+        "quest_id": "employment_search",
+        "title": "Finding Work",
+        "description": "With your ID secured, you can now begin the process of finding employment to stabilize your income.",
+        "steps": [
+            {
+                "step_id": "job_search_beginning",
+                "title": "Starting the Job Hunt",
+                "description": "With your new ID, you can now officially apply for jobs. The task is daunting given your current circumstances.",
+                "choices": [
+                    {
+                        "text": "Apply for day labor jobs",
+                        "outcomes": {
+                            "mental": -5,
+                            "energy": -30,
+                            "message": "You visit places hiring for daily cash work. The labor is physically demanding but provides immediate income.",
+                            "story_flags": ["day_labor_path"],
+                            "quest_progress": 1,
+                            "money": 20
+                        }
+                    },
+                    {
+                        "text": "Visit an employment center",
+                        "outcomes": {
+                            "mental": 5,
+                            "energy": -20,
+                            "message": "The employment center offers resources, resume help, and job listings. They'll help you find more stable opportunities.",
+                            "story_flags": ["employment_center_registration"],
+                            "quest_progress": 2
+                        }
+                    },
+                    {
+                        "text": "Look for under-the-table work",
+                        "outcomes": {
+                            "mental": -10,
+                            "energy": -25,
+                            "message": "You find some informal work arrangements. The pay is unpredictable but immediate, with no questions asked.",
+                            "story_flags": ["informal_work_path"],
+                            "quest_progress": 1,
+                            "money": 15,
+                            "reputation": {"streets": 5}
+                        }
+                    }
+                ],
+                "requirements": {
+                    "story_flags": ["id_obtained"]
+                },
+                "type": "quest",
+                "location_types": ["downtown", "industrial_area", "employment_center"]
+            }
+        ]
+    },
+    "housing_stability": {
+        "quest_id": "housing_stability",
+        "title": "Finding Home",
+        "description": "The search for stable housing is crucial to breaking the cycle of homelessness.",
+        "steps": [
+            {
+                "step_id": "housing_options_exploration",
+                "title": "Exploring Housing Options",
+                "description": "With your ID, you can now apply for housing programs and subsidies that were previously inaccessible.",
+                "choices": [
+                    {
+                        "text": "Apply for emergency housing",
+                        "outcomes": {
+                            "mental": 10,
+                            "energy": -20,
+                            "message": "You submit an application for emergency housing assistance, which could provide temporary stability.",
+                            "story_flags": ["emergency_housing_application"],
+                            "quest_progress": 1
+                        }
+                    },
+                    {
+                        "text": "Look for a room to rent",
+                        "outcomes": {
+                            "mental": -5,
+                            "energy": -30,
+                            "message": "You search for affordable rooms or shared accommodations, which would require a security deposit and proof of income.",
+                            "story_flags": ["room_rental_search"],
+                            "quest_progress": 1
+                        },
+                        "requirements": {
+                            "money": 50
+                        }
+                    },
+                    {
+                        "text": "Research subsidized housing programs",
+                        "outcomes": {
+                            "mental": 5,
+                            "energy": -15,
+                            "message": "You gather information about long-term subsidized housing options, which typically have waiting lists but offer stability.",
+                            "story_flags": ["subsidized_housing_research"],
+                            "quest_progress": 2
+                        }
+                    }
+                ],
+                "requirements": {
+                    "story_flags": ["id_obtained"]
+                },
+                "type": "quest",
+                "location_types": ["service_center", "housing_authority", "library"]
+            }
+        ]
+    }
+}
